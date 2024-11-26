@@ -426,3 +426,4 @@ function showHideList() {
     let form = document.getElementById("add-player");
     form.classList.toggle("hidden");
   }
+
