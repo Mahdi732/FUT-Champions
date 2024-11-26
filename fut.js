@@ -423,6 +423,6 @@ menuToggle.addEventListener('click', _ => {
     mobileMenu.classList.toggle('hidden');
 });
 function showHideList() {
-    let form = document.getElementById("list-add");
+    let form = document.getElementById("add-player");
     form.classList.toggle("hidden");
   }
