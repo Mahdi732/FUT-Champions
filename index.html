@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <title>Fut Champion</title>
 </head>
-<body class="bg-black">
-    <nav class="bg-black p-4 min-w-full md:min-w-full">
-        <ul class="hidden flex md:flex justify-around md:justify-around items-center md:items-center">
+<body class="bg-[#353434]">
+    <nav class="bg-black  min-w-full md:min-w-full md:h-20 p-4">
+        <ul class="hidden md:flex md:justify-around items-center md:items-center">
             <li><a href="#" class="text-white text-sm md:text-lg font-semibold hover:text-gray-400 transition duration-300">Fut Champion</a></li>
             <li><a href="#" class="text-white text-sm md:text-lg font-semibold hover:text-gray-400 transition duration-300">About</a></li>
-            <li><button type="button" class="bg-blue-600 px-3 py-2 md:px-4 md:py-2 rounded-full md:hover:bg-green-500 md:active:bg-red-700 text-white text-sm md:text-lg font-semibold transition duration-300">Add Player</button></li>
+            <li><button onclick="showHideList()" type="button" class="bg-blue-600 px-3 py-2 md:px-4 md:py-2 rounded-full md:hover:bg-green-500 md:active:bg-red-700 text-white text-sm md:text-lg font-semibold transition duration-300">Add Player</button></li>
         </ul>
         <div class="flex justify-between">
             <li><a href="#" class="text-white text-sm md:text-lg font-semibold md:hidden">Fut Champion</a></li>
-            <button id="menu-toggle" class="text-white focus:outline-none md:hidden">
+            <button  id="menu-toggle" class="text-white focus:outline-none md:hidden">
                 <i class="fa fa-bars fa-2x"></i>
             </button>
         </div>
@@ -28,93 +28,164 @@
         </ul>
     </div>    
     </div>
-      <div class="min-h-[77vh] w-full md:w-[56rem] flex flex-col gap-10 bg-[url('stadium_background.webp')] bg-no-repeat bg-cover bg-center">
-        <div class="flex justify-center gap-[4rem] md:gap-32">
-            <button type="button"  class="flex flex-col items-center ">
-                <div class="bg-[url('badge_ballon_dor.webp')] bg-cover bg-no-repeat h-[6rem] w-[4rem] md:h-[8.8rem] md:w-[6rem] ">
-                </div>
-                     <div class="bg-[url('pos_base.png')] bg-contain bg-no-repeat h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
-                    LW
-                </div>
-            </button>
-            <button type="button"  class="flex flex-col items-center ">
-                <div class=" mt-[-0.7rem] bg-[url('badge_ballon_dor.webp')] bg-cover bg-no-repeat h-[6rem] w-[4rem] md:h-[8.8rem] md:w-[6rem]  ">
-                </div>
-                     <div class="bg-[url('pos_base.png')] bg-contain bg-no-repeat h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
-                    ST
-                </div>
-            </button>
-            <button type="button"  class="flex flex-col items-center ">
-                <div class="bg-[url('badge_ballon_dor.webp')] bg-cover bg-no-repeat h-[6rem] w-[4rem] md:h-[8.8rem] md:w-[6rem]  ">
-                </div>
-                     <div class="bg-[url('pos_base.png')] bg-contain bg-no-repeat h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
-                    RW
-                </div>
-            </button>
-        </div>
-        <div class="flex justify-center gap-16 md:gap-44">
-            <button type="button"  class="flex flex-col items-center ">
-                <div class=" mt-[2rem] md:mt-0 bg-[url('badge_ballon_dor.webp')] bg-cover bg-no-repeat h-[6rem] w-[4rem] md:h-[8.8rem] md:w-[6rem]  ">
-                </div>
-                <div class="bg-[url('pos_base.png')] bg-contain bg-no-repeat h-9 w-9 md:h-11 md:w-11 md:mt-[-0.6rem] text-white text-center">
-                    CM
-                </div>
-            </button>
-            <button type="button"  class="flex flex-col items-center ">
-                <div class=" mt-[-1rem] bg-[url('badge_ballon_dor.webp')] bg-cover bg-no-repeat h-[6rem] w-[4rem] md:h-[8.8rem] md:w-[6rem]  ">
-                </div>
-                <div class="bg-[url('pos_base.png')] bg-contain bg-no-repeat h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
-                    CAM
-                </div>
-            </button>
-            <button type="button"  class="flex flex-col items-center ">
-                <div class=" mt-[2rem] md:mt-0 bg-[url('badge_ballon_dor.webp')] bg-cover bg-no-repeat h-[6rem] w-[4rem] md:h-[8.8rem] md:w-[6rem]  ">
-                </div>
-                <div class="bg-[url('pos_base.png')] bg-contain bg-no-repeat h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
-                    CM
-                </div>
-            </button>
-        </div>
-        <div class="flex justify-center gap-8 md:gap-40">
-            <button type="button"  class="flex flex-col items-center ">
-                <div class=" mt-[4rem] bg-[url('badge_ballon_dor.webp')] bg-cover bg-no-repeat h-[6rem] w-[4rem] md:h-[8.8rem] md:w-[6rem]  ">
-                </div>
-                <div class="bg-[url('pos_base.png')] bg-contain bg-no-repeat h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
-                    LB
-                </div>
-            </button>
-            <button type="button"  class="flex flex-col items-center ">
-                <div class=" mt-[2rem] bg-[url('badge_ballon_dor.webp')] bg-cover bg-no-repeat h-[6rem] w-[4rem] md:h-[8.8rem] md:w-[6rem]  ">
-                </div>
-                <div class="bg-[url('pos_base.png')] bg-contain bg-no-repeat h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
-                    CB
-                </div>
-            </button>
-            <button type="button"  class="flex flex-col items-center ">
-                <div class=" mt-[2rem] bg-[url('badge_ballon_dor.webp')] bg-cover bg-no-repeat h-[6rem] w-[4rem] md:h-[8.8rem] md:w-[6rem]  ">>
-                </div>
-                     <div class="bg-[url('pos_base.png')] bg-contain bg-no-repeat h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
-                    CB
-                </div>
-            </button>
-            <button type="button"  class="flex flex-col items-center ">
-                <div class=" mt-[4rem]  bg-[url('badge_ballon_dor.webp')] bg-cover bg-no-repeat h-[6rem] w-[4rem] md:h-[8.8rem] md:w-[6rem]  ">
-                </div>
-                     <div class="bg-[url('pos_base.png')] bg-contain bg-no-repeat h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
-                    RB
-                </div>
-            </button>
-        </div>
-        <div class="flex justify-center">
-            <button type="button" class="flex flex-col items-center ">
-              <div class="mt-[-2rem] bg-[url('badge_ballon_dor.webp')] bg-cover bg-no-repeat h-[6rem] w-[4rem] md:h-[8.8rem] md:w-[6rem] ">
+
+    <div class=" flex flex-col gap-0 md:flex md:flex-row md:gap-11">
+        <div class="min-h-[77vh] w-full md:w-[56rem] flex flex-col gap-10 bg-[url('/img/stadium_background.webp')] bg-no-repeat bg-cover bg-center">
+            <div class="flex justify-center gap-[4rem] md:gap-32">
+                <button type="button"  class="flex flex-col items-center ">
+                    <div class="bg-[url('/img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem] ">
+                    </div>
+                    <p class="bg-[url('/img/pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
+                        LW
+                    </p>
+                </button>
+                <button type="button"  class="flex flex-col items-center mt-[0.5rem]">
+                    <div class=" mt-[-0.7rem] bg-[url('/img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem]  ">
+                    </div>
+                    <p class="bg-[url('/img/pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
+                        CF
+                    </p>
+                </button>
+                <button type="button"  class="flex flex-col items-center ">
+                    <div class="bg-[url('/img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem]  ">
+                    </div>
+                    <p class="bg-[url('/img/pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base  h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
+                        RW
+                    </p>
+                </button>
+            </div>
+    
+            <div class="flex justify-center gap-16 md:gap-44">
+                <button type="button"  class="flex flex-col items-center ">
+                    <div class=" mt-[2rem] md:mt-0 bg-[url('/img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem]  ">
+                    </div>
+                    <p class="bg-[url('/img/pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base h-9 w-9 md:h-11 md:w-11 md:mt-[-0.6rem] text-white text-center">
+                        CM
+                    </p>
+                </button>
+                <button type="button"  class="flex flex-col items-center ">
+                    <div class=" mt-[-1rem] bg-[url('/img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem]  ">
+                    </div>
+                    <p class="bg-[url('/img/pos_base.png')] bg-contain bg-no-repeat text-[0.7rem] md:text-[0.9rem] h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center md:text-center">
+                        CAM
+                    </p>
+                </button>
+                <button type="button"  class="flex flex-col items-center ">
+                    <div class=" mt-[2rem] md:mt-0 bg-[url('/img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem]  ">
+                    </div>
+                    <p class="bg-[url('/img/pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
+                        CM
+                    </p>
+                </button>
+            </div>
+    
+            <div class="flex justify-center gap-8 md:gap-40">
+                <button type="button"  class="flex flex-col items-center ">
+                    <div class=" mt-[4rem] bg-[url('/img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem]  ">
+                    </div>
+                    <p class="bg-[url('/img/pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
+                        LB
+                    </p>
+                </button>
+                <button type="button"  class="flex flex-col items-center ">
+                    <div class=" mt-[2rem] bg-[url('/img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem]  ">
+                    </div>
+                    <p class="bg-[url('/img/pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
+                        CB
+                    </p>
+                </button>
+                <button type="button"  class="flex flex-col items-center ">
+                    <div class=" mt-[2rem] bg-[url('/img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem]  ">>
+                    </div>
+                    <p class="bg-[url('/img/pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
+                        CB
+                    </p>
+                </button>
+                <button type="button"  class="flex flex-col items-center hover:shadow-2xl ">
+                    <div class=" mt-[4rem]  bg-[url('/img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem]  ">
+                    </div>
+                    <p class="bg-[url('/img/pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center ">
+                        RB
+                    </p>
+                </button>
+            </div>
+    
+            <div class="flex justify-center">
+                <button type="button" class="flex flex-col items-center ">
+                  <div class="mt-[-2rem] bg-[url('/img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem] ">
+                  </div>
+                  <p class="bg-[url('/img/pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
+                    GK
+                  </p>
+                </button>
               </div>
-              <div class="bg-[url('pos_base.png')] bg-contain bg-no-repeat h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
-                GK
-              </div>
-            </button>
-          </div>
-      </div>
+        </div>
+          
+        <div class="flex flex-col justify-center gap-0 md:gap-8 bg-black w-full h-[56rem] mb-3 md:h-[52rem] mt-2 mr-4 rounded-2xl">
+            <div class="flex flex-col m-4">
+                <label for="teamPlan" class="text-white text-lg font-semibold mb-2">Team Plan</label>
+                <select id="teamPlan" name="teamPlan" class="border-2 border-gray-700 rounded-lg p-2 bg-transparent text-white">
+                    <option class="text-black" value="attacking">4-3-3</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col m-4">
+                <label for="defensiveApproach" class="text-white text-lg font-semibold mb-2">Defensive Approach</label>
+                <select id="defensiveApproach" name="defensiveApproach" class="border-2 border-gray-700 rounded-lg p-2 bg-transparent text-white">
+                    <option class="text-black" value="highPress">High Press</option>
+                    <option class="text-black" value="deepDefensive">Deep Defensive</option>
+                    <option class="text-black" value="counterAttack">Counter Attack</option>
+                </select>
+                <p class="text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eveniet amet inventore ipsam voluptate, molestiae laudantium a minima ipsum voluptatum, deserunt voluptas cumque quae minus architecto officia! Ab ex debitis quas? Laboriosam, rerum itaque a dicta illum odit nesciunt neque deserunt mollitia omnis autem amet cum voluptates delectus tempora atque.</p>
+            </div>
+
+            <div class="flex flex-col m-4">
+                <label for="teamPlan" class="text-white text-lg font-semibold mb-2">Team Plan</label>
+                <select id="teamPlan" name="teamPlan" class="border-2 border-gray-700 rounded-lg p-2 bg-transparent text-white">
+                    <option class="text-black" value="attacking">Attacking</option>
+                    <option class="text-black" value="balanced">Balanced</option>
+                    <option class="text-black" value="defensive">Defensive</option>
+                </select>
+                <p class="text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eveniet amet inventore ipsam voluptate, molestiae laudantium a minima ipsum voluptatum, deserunt voluptas cumque quae minus architecto officia! Ab ex debitis quas? Laboriosam, rerum itaque a dicta illum odit nescius.</p>
+            </div>
+            <div class="flex flex-col m-4">
+                <label for="teamPlan" class="text-white text-lg font-semibold mb-2">Build Up Style</label>
+                <select id="teamPlan" name="teamPlan" class="border-2 border-gray-700 rounded-lg p-2 bg-transparent text-white">
+                    <option class="text-black" value="attacking">Balanced</option>
+                    <option class="text-black" value="balanced">Counter</option>
+                    <option class="text-black" value="defensive">Short Pacing</option>
+                </select>
+                <p class="text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eveniet amet inventore ipsam voluptate, molestiae laudantium a minima ipsum voluptatum, deserunt voluptas cumque quae minus architecto officia! Ab ex debitis quas? Laboriosam, rerum itaque a dicta illum odit nescius.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="list-add" class="absolute top-0 left-0 w-full h-screen bg-black bg-opacity-60 flex justify-center items-center hidden">
+        <div class="bg-purple-200 h-[500px] w-96 rounded-xl flex justify-center py-6 ">
+            <button onclick="showHideList()" id="close" type="button" class="flex justify-end items-start relative top-[-1.5rem] left-[-2rem] ">x</button>
+            <form class=" flex flex-col justify-around w-72">
+                <input id="title" type="text" placeholder="Enter the title" required>
+                <input id="date" type="date" required>
+                 
+                <select id="list" class="border-2 rounded p-2" required>
+                    <option value="" disabled selected hidden>Select a status</option>
+                    <option value="toDo">To do</option>
+                    <option value="doing">Doing</option>
+                    <option value="done">Done</option>
+                </select>
+
+               <select id="select" class="border-2 rounded p-2" required>
+                    <option value="" disabled selected hidden>Select a priority</option>
+                    <option value="p1">P1</option>
+                    <option value="p2">P2</option>
+                    <option value="p3">P3</option>
+                </select>
+                <textarea id="description" maxlength="200" class="resize-none h-28" placeholder="Enter your description" required></textarea>
+                <button id="submet" type="button" class=" bg-violet-950 text-white border-solid border-2 rounded-full border-violet-950 h-11 justify-end">Submit</button>
+                <button id="update" type="button" class=" bg-violet-950 text-white border-solid border-2 rounded-full border-violet-950 h-11 justify-end hidden">Update</button>
+            </form>
+        </div>
+    </div>
 
       <footer class="bg-gray-900 text-gray-400 p-6">
         <div class=" mx-auto flex flex-col md:flex-row justify-between items-center">
@@ -125,7 +196,7 @@
           </div>
           <p class="text-sm">© 2024 Fut Champion. All rights reserved.</p>
           <div class="mt-4 md:mt-0">
-            <img src="Group 205.png" alt="">
+            <img src="img/Group 205.png" alt="">
           </div>
         </div>
       </footer>
