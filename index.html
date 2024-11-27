@@ -239,7 +239,7 @@
                 
             </div>
             <div class="flex justify-around gap-12 mt-14">
-                <button type="button" onclick="showHideList()" id="add-team-player" class=" bg-green-500 text-white border-solid border-2 rounded-full border-green-500 h-11 w-28 justify-end hover:bg-green-800 hover:border-green-800 duration-300">Add Team</button>
+                <button type="button" id="add-team-player" class=" bg-green-500 text-white border-solid border-2 rounded-full border-green-500 h-11 w-28 justify-end hover:bg-green-800 hover:border-green-800 duration-300">Add Team</button>
                 <button type="button" onclick="showHideList()" class=" bg-white text-black border-solid border-2 rounded-full border-white h-11 w-28 justify-end ">Cancel</button>
             </div>
         </div>
@@ -252,11 +252,11 @@
         <div class="flex flex-col   md:gap-8 bg-black w-[37.225rem] h-[56rem] mb-3 md:h-[52rem] mt-2 mr-4 rounded-2xl">
             <div class="flex flex-col m-4">
                 <label for="" class="text-white text-lg font-semibold mb-2">Player Name</label>
-                <input id="player-name" minlength="5" maxlength="14" class="bg-[#2b2a2a] hover:border-green-600 text-white border border-3 border-gray-600 rounded-xl h-8 " min="0" max="100" type="text" placeholder="  Enter player name"> 
+                <input id="gk-name" minlength="5" maxlength="14" class="bg-[#2b2a2a] hover:border-green-600 text-white border border-3 border-gray-600 rounded-xl h-8 " min="0" max="100" type="text" placeholder="  Enter player name"> 
             </div> 
             <div class="flex flex-col m-4 ">
-                <label for="defensiveApproach" class="text-white text-lg font-semibold mb-2">Position</label>
-                <select id="player-position" class="border-2 border-gray-700 rounded-lg p-2 bg-transparent text-white">
+                <label for="" class="text-white text-lg font-semibold mb-2">Position</label>
+                <select id="player-position-gk" class="border-2 border-gray-700 rounded-lg p-2 bg-transparent text-white">
                     <option value="" disabled selected hidden>Select Position</option>
                     <option class="text-black" value="GK" >GK</option>
                 </select>
@@ -268,31 +268,31 @@
                     <div class="flex justify-center  gap-24">
                         <div class="flex flex-col justify-start">
                             <label for="" class="text-white text-lg font-semibold mb-2">diving:</label>
-                            <input id="diving-status" class="bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+                            <input id="diving-status" class="bg-[#2b2a2a] text-white hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                         </div>
                         <div class="flex flex-col justify-start">
                             <label for="" class="text-white text-lg font-semibold mb-2">handling:</label>
-                            <input id="handling-status" class="bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+                            <input id="handling-status" class="bg-[#2b2a2a] text-white hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                         </div>
                     </div>
                     <div class="flex justify-center gap-24">
                         <div class="flex flex-col justify-start">
                             <label for="" class="text-white text-lg font-semibold mb-2">kicking:</label>
-                            <input id="kicking-status" class="bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+                            <input id="kicking-status" class="bg-[#2b2a2a] text-white hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                         </div>
                         <div class="flex flex-col justify-start">
                             <label for="" class="text-white text-lg font-semibold mb-2">reflexes:</label>
-                            <input id="reflexes-status" class="bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+                            <input id="reflexes-status" class="bg-[#2b2a2a] text-white hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                         </div>
                     </div>
                     <div class="flex justify-center gap-24">
                         <div class="flex flex-col justify-start">
                             <label for="" class="text-white text-lg font-semibold mb-2">speed:</label>
-                            <input id="speed-statu" class="bg-[#2b2a2a] border hover:border-green-600 border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+                            <input id="speed-status" class="bg-[#2b2a2a] text-white border hover:border-green-600 border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                         </div>
                         <div class="flex flex-col justify-start">
                             <label for="" class="text-white text-lg font-semibold mb-2">positioning:</label>
-                            <input id="positioning-statu" class="bg-[#2b2a2a] border hover:border-green-600 border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+                            <input id="positioning-status" class="bg-[#2b2a2a] text-white border hover:border-green-600 border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                         </div>
                     </div>
             <div class="flex justify-around gap-12 mt-14">
@@ -302,6 +302,16 @@
         </div>
         </div>
     </div>
+
+    <!-- replacement -->
+
+    <div class="p-4 bg-gray-100 rounded-lg shadow-md w-full mt-2">
+        <h3 class="text-lg font-bold text-gray-800 mb-2">Replacement Players</h3>
+        <ul id="replacement-list" class="list-disc list-inside space-y-1 text-gray-700">
+
+        </ul>
+      </div>
+      
 
     <!-- footer -->
 
