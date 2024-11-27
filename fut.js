@@ -447,8 +447,9 @@ let kickingStatu = document.getElementById("kicking-status");
 let reflexesStatu = document.getElementById("reflexes-status");
 let speedStatu = document.getElementById("speed-statu");
 let positioningStatu = document.getElementById("positioning-statu");
-let addTeamPlayer = document.getElementById("add-team-player");
-let addStatiqueChoise = document.getElementById("statique-add")
+const btnAddTeamPlayer = document.getElementById("add-team-player");
+const btnAddGkPlayer = document.getElementById("add-team-gk");
+let addStatiqueChoise = document.getElementById("statique-add");
 const inputverifi = document.querySelectorAll('input[type="number"]');
 
   for (let i = 0; i < inputverifi.length; i++) {
@@ -457,5 +458,82 @@ const inputverifi = document.querySelectorAll('input[type="number"]');
       this.value = this.value.slice(0, 2); 
     }
   });
+}
+
+btnAddTeamPlayer.addEventListener("click", function () {
+  if (playerName.value.trim() !== "" && playerPosition.value.trim() !== "" && paceStatu.value.trim() !== "" && shootingStatu.value.trim() !== "" && passingStatu.value.trim() !== "" && dribblinStatu.value.trim() !== "" && defendingStatu.value.trim() !== "" && physicalStatu.value.trim() !== "") {
+    addToArray(playerName.value, playerPosition.value, paceStatu.value, shootingStatu.value, passingStatu.value, dribblinStatu.value, defendingStatu.value, physicalStatu.value);
+    console.log(addToArray());
+    addToPlan();
+  }else {
+    alert("please entre the corect info !");
+  }
+});
+
+
+function addToArray(name, position, pace, shooting, passing, dribbling, defending, physical){
+  let playeradded = {
+    "name" : name,
+    "position" : position,
+    "pace" : pace,
+    "shooting" : shooting,
+    "passing" : passing,
+    "dribbling" : dribbling,
+    "defending" : defending,
+    "physical" : physical
+  }
+  players.push(playeradded);
+}
+
+function addToPlan() {
+  let divPlayerCard = document.createElement("div");
+  divPlayerCard.innerHTML =`
+   <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[36rem] h-[52rem] flex flex-col ">
+            <div class="flex justify-center items-center gap-16 mt-[6.2rem]">
+                <span class="flex flex-col mt-[-11.5rem] mr-[-9rem]">
+                    <p class="text-5xl font-bold text-white">99</p>
+                    <p class="text-3xl text-white">CF</p>
+                </span>
+                <div class="bg-[url('img/messi.png')] bg-cover bg-no-repeat w-[27.5rem] h-[26.5rem] ">
+                </div> 
+            </div>
+            <div class="flex flex-col items-center mt-1 gap-6">
+                <p class="text-5xl text-center font-medium text-white">Messi</p>
+                <div class="flex justify-center gap-8 ml-5">
+                    <div>
+                        <p class="text-2xl font-normal text-white">PAC</p>
+                        <p class="text-[2rem] font-bold text-white">93</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-normal text-white">SHO</p>
+                        <p class="text-[2rem] font-bold text-white">98</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-normal text-white">PAS</p>
+                        <p class="text-[2rem] font-bold text-white">99</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-normal text-white">DRI</p>
+                        <p class="text-[2rem] font-bold text-white">99</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-normal text-white">DEF</p>
+                        <p class="text-[2rem] font-bold text-white">46</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-normal text-white">PHY</p>
+                        <p class="text-[2rem] font-bold text-white">82</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center items-center gap-6 ml-5">
+                <img src="img/argentina.webp" class="w-12" alt="">
+                <img src="img/msl.webp" class="w-11" alt="">
+                <img src="img/inter.webp" class="w-12" alt="">
+            </div>
+    
+   </div>
+  `
+
 }
 
