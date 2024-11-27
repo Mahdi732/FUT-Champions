@@ -107,7 +107,7 @@
                     </p>
                 </button>
                 <button type="button"  class="flex flex-col items-center ">
-                    <div class=" mt-[2rem] bg-[url('/img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem]  ">>
+                    <div class=" mt-[2rem] bg-[url('/img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem]  ">
                     </div>
                     <p class="bg-[url('/img/pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
                         CB
@@ -178,93 +178,64 @@
         <div class="flex flex-col   md:gap-8 bg-black w-[37.225rem] h-[56rem] mb-3 md:h-[52rem] mt-2 mr-4 rounded-2xl">
             <div class="flex flex-col m-4">
                 <label for="" class="text-white text-lg font-semibold mb-2">Player Name</label>
-                <input class="bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+                <input id="player-name" minlength="5" maxlength="14" class="bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " min="0" max="100" type="text" placeholder="  Enter player name"> 
             </div>
 
             <div class="flex flex-col m-4 ">
                 <label for="defensiveApproach" class="text-white text-lg font-semibold mb-2">Position</label>
-                <select id="defensiveApproach" name="defensiveApproach" class="border-2 border-gray-700 rounded-lg p-2 bg-transparent text-white">
+                <select id="player-position" class="border-2 border-gray-700 rounded-lg p-2 bg-transparent text-white">
                     <option value="" disabled selected hidden>Select Position</option>
-                    <option class="text-black" >ST</option>
-                    <option class="text-black" >RW</option>
-                    <option class="text-black" >LW</option>
-                    <option class="text-black" >CM</option>
-                    <option class="text-black" >CAM</option>
-                    <option class="text-black" >CB</option>
-                    <option class="text-black" >LB</option>
-                    <option class="text-black" >GK</option>
+                    <option class="text-black" value="ST" >ST</option>
+                    <option class="text-black" value="RW" >RW</option>
+                    <option class="text-black" value="LW" >LW</option>
+                    <option class="text-black" value="CM" >CM</option>
+                    <option class="text-black" value="CAM" >CAM</option>
+                    <option class="text-black" value="CB" >CB</option>
+                    <option class="text-black" value="LB" >LB</option>
+                    <option class="text-black" value="RB" >RB</option>
+                    <option class="text-black" value="GK" >GK</option>
                 </select>
             </div>
 
             <!-- statique -->
-
-            <div class="flex flex-col m-4 gap-8 ">
-                <label class="text-white text-lg font-semibold mb-2 text-center"> Player Statique</label>
-                <div class="flex justify-center  gap-24">
-                    <div class="flex flex-col justify-start">
-                        <label for="" class="text-white text-lg font-semibold mb-2">pace:</label>
-                        <input id="pace-status" class="bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
-                    </div>
-                    <div class="flex flex-col justify-start">
-                        <label for="" class="text-white text-lg font-semibold mb-2">shooting:</label>
-                        <input id="shooting-status" class="bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
-                    </div>
-                </div>
-                <div class="flex justify-center gap-24">
-                    <div class="flex flex-col justify-start">
-                        <label for="" class="text-white text-lg font-semibold mb-2">passing:</label>
-                        <input id="passing-status" class="bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
-                    </div>
-                    <div class="flex flex-col justify-start">
-                        <label for="" class="text-white text-lg font-semibold mb-2">dribbling:</label>
-                        <input id="dribbling-status" class="bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
-                    </div>
-                </div>
-                <div class="flex justify-center gap-24">
-                    <div class="flex flex-col justify-start">
-                        <label for="" class="text-white text-lg font-semibold mb-2">defending:</label>
-                        <input id="defending-status" class="bg-[#2b2a2a] border hover:border-green-600 border-3 border-gray-600 rounded-xl h-8 " type="number"> 
-                    </div>
-                    <div class="flex flex-col justify-start">
-                        <label for="" class="text-white text-lg font-semibold mb-2">physical:</label>
-                        <input id="physical-status" class="bg-[#2b2a2a] border hover:border-green-600 border-3 border-gray-600 rounded-xl h-8 " type="number"> 
-                    </div>
-                </div>
-                <div class="flex flex-col m-4 gap-6 hidden">
+             <div id="statique-add">
+                <div class="flex flex-col m-4 gap-8 " >
                     <label class="text-white text-lg font-semibold mb-2 text-center"> Player Statique</label>
                     <div class="flex justify-center  gap-24">
                         <div class="flex flex-col justify-start">
-                            <label for="" class="text-white text-lg font-semibold mb-2">diving:</label>
-                            <input id="diving-status" class="bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+                            <label for="" class="text-white text-lg font-semibold mb-2">pace:</label>
+                            <input id="pace-status" class="appearance-textfield bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                         </div>
                         <div class="flex flex-col justify-start">
-                            <label for="" class="text-white text-lg font-semibold mb-2">reflexes:</label>
-                            <input id="reflexes-status" class="bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+                            <label for="" class="text-white text-lg font-semibold mb-2">shooting:</label>
+                            <input id="shooting-status" class="appearance-textfield bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                         </div>
                     </div>
                     <div class="flex justify-center gap-24">
                         <div class="flex flex-col justify-start">
-                            <label for="" class="text-white text-lg font-semibold mb-2">speed:</label>
-                            <input id="speed-status" class="bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+                            <label for="" class="text-white text-lg font-semibold mb-2">passing:</label>
+                            <input id="passing-status" class="appearance-textfield bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                         </div>
                         <div class="flex flex-col justify-start">
-                            <label for="" class="text-white text-lg font-semibold mb-2">positioning:</label>
-                            <input id="positioning-status" class="bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+                            <label for="" class="text-white text-lg font-semibold mb-2">dribbling:</label>
+                            <input id="dribbling-status" class="appearance-textfield bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                         </div>
                     </div>
                     <div class="flex justify-center gap-24">
                         <div class="flex flex-col justify-start">
                             <label for="" class="text-white text-lg font-semibold mb-2">defending:</label>
-                            <input id="defending-statu" class="bg-[#2b2a2a] border hover:border-green-600 border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+                            <input id="defending-status" class="appearance-textfield bg-[#2b2a2a] border hover:border-green-600 border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                         </div>
                         <div class="flex flex-col justify-start">
                             <label for="" class="text-white text-lg font-semibold mb-2">physical:</label>
-                            <input id="physical-statu" class="bg-[#2b2a2a] border hover:border-green-600 border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+                            <input id="physical-status" class="appearance-textfield bg-[#2b2a2a] border hover:border-green-600 border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                         </div>
                     </div>
-            </div>
+                </div>
+             </div>
+           
             <div class="flex justify-around gap-12 mt-14">
-                <button type="button" onclick="" class=" bg-green-500 text-white border-solid border-2 rounded-full border-green-500 h-11 w-28 justify-end hover:bg-green-800 hover:border-green-800 duration-300">Add Team</button>
+                <button type="button" id="add-team-player" class=" bg-green-500 text-white border-solid border-2 rounded-full border-green-500 h-11 w-28 justify-end hover:bg-green-800 hover:border-green-800 duration-300">Add Team</button>
                 <button type="button" onclick="showHideList()" class=" bg-white text-black border-solid border-2 rounded-full border-white h-11 w-28 justify-end ">Cancel</button>
             </div>
         </div>

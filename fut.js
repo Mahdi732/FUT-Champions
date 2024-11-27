@@ -427,3 +427,146 @@ function showHideList() {
     form.classList.toggle("hidden");
   }
 
+
+let playerName = document.getElementById("player-name");;
+let playerPosition = document.getElementById("player-position");
+let paceStatu = document.getElementById("pace-status");
+let shootingStatu = document.getElementById("shooting-status");
+let passingStatu = document.getElementById("passing-status");
+let dribblinStatu = document.getElementById("dribbling-status");
+let defendingStatu = document.getElementById("defending-status");
+let physicalStatu = document.getElementById("physical-status");
+let divingStatu = document.getElementById("diving-status");
+let handlingStatu = document.getElementById("handling-status");
+let kickingStatu = document.getElementById("kicking-status");
+let reflexesStatu = document.getElementById("reflexes-status");
+let speedStatu = document.getElementById("speed-statu");
+let positioningStatu = document.getElementById("positioning-statu");
+let addTeamPlayer = document.getElementById("add-team-player");
+let addStatiqueChoise = document.getElementById("statique-add")
+const inputverifi = document.querySelectorAll('input[type="number"]');
+
+  for (let i = 0; i < inputverifi.length; i++) {
+  inputverifi[i].addEventListener("input", function () {
+    if (this.value.length > 2) {
+      this.value = this.value.slice(0, 2); 
+    }
+  });
+}
+
+addTeamPlayer.addEventListener("click", _ =>{
+  if(playerPosition.value !== "GK"){
+    if (playerName.value.trim() !== "" && playerPosition.value !== "" && paceStatu.value.trim() !== "" && shootingStatu.value.trim() !== "" 
+    && passingStatu.value.trim() !== "" && dribblinStatu.value.trim() !== "" && defendingStatu.value.trim() !== "" && physicalStatu.value.trim() !== "") {
+      
+    }else {
+      alert("please enter the corect info !");
+    }
+}else if (playerPosition.value === "GK") {
+  addStatiqueChoise.innerHTML = '';
+  let gkStatique = document.createElement('div');
+  gkStatique.classList.add('flex', 'flex-col', 'gap-8 ');
+  addStatiqueChoise.innerHTML = `
+<label class="text-white text-lg font-semibold mb-2 text-center"> Goalkeeper Statique</label>
+  <div class="flex justify-center gap-24">
+    <div class="flex flex-col justify-start">
+      <label for="" class="text-white text-lg font-semibold mb-2">diving:</label>
+      <input id="diving-status" class="appearance-textfield bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+    </div>
+    <div class="flex flex-col justify-start">
+      <label for="" class="text-white text-lg font-semibold mb-2">handling:</label>
+      <input id="handling-status" class="appearance-textfield bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+    </div>
+  </div>
+  <div class="flex justify-center gap-24">
+    <div class="flex flex-col justify-start">
+      <label for="" class="text-white text-lg font-semibold mb-2">kicking:</label>
+      <input id="kicking-status" class="appearance-textfield bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+    </div>
+    <div class="flex flex-col justify-start">
+      <label for="" class="text-white text-lg font-semibold mb-2">reflexes:</label>
+      <input id="reflexes-status" class="appearance-textfield bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+    </div>
+  </div>
+  <div class="flex justify-center gap-24">
+    <div class="flex flex-col justify-start">
+      <label for="" class="text-white text-lg font-semibold mb-2">speed:</label>
+      <input id="speed-statu" class="appearance-textfield bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+    </div>
+    <div class="flex flex-col justify-start">
+      <label for="" class="text-white text-lg font-semibold mb-2">positioning:</label>
+      <input id="positioning-statu" class="appearance-textfield bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+    </div>
+  </div>
+  `;
+  addStatiqueChoise.appendChild(gkStatique);
+}else{
+  
+}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* <label class="text-white text-lg font-semibold mb-2 text-center"> Player Statique</label>
+<div class="flex justify-center  gap-24">
+    <div class="flex flex-col justify-start">
+        <label for="" class="text-white text-lg font-semibold mb-2">pace:</label>
+        <input id="pace-status" class="appearance-textfield bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+    </div>
+    <div class="flex flex-col justify-start">
+        <label for="" class="text-white text-lg font-semibold mb-2">shooting:</label>
+        <input id="shooting-status" class="appearance-textfield bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+    </div>
+</div>
+<div class="flex justify-center gap-24">
+    <div class="flex flex-col justify-start">
+        <label for="" class="text-white text-lg font-semibold mb-2">passing:</label>
+        <input id="passing-status" class="appearance-textfield bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+    </div>
+    <div class="flex flex-col justify-start">
+        <label for="" class="text-white text-lg font-semibold mb-2">dribbling:</label>
+        <input id="dribbling-status" class="appearance-textfield bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+    </div>
+</div>
+<div class="flex justify-center gap-24">
+    <div class="flex flex-col justify-start">
+        <label for="" class="text-white text-lg font-semibold mb-2">defending:</label>
+        <input id="defending-status" class="appearance-textfield bg-[#2b2a2a] border hover:border-green-600 border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+    </div>
+    <div class="flex flex-col justify-start">
+        <label for="" class="text-white text-lg font-semibold mb-2">physical:</label>
+        <input id="physical-status" class="appearance-textfield bg-[#2b2a2a] border hover:border-green-600 border-3 border-gray-600 rounded-xl h-8 " type="number"> 
+    </div>
+</div> */}
