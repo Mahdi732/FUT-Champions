@@ -451,6 +451,19 @@ const btnAddTeamPlayer = document.getElementById("add-team-player");
 const btnAddGkPlayer = document.getElementById("add-team-gk");
 let addStatiqueChoise = document.getElementById("statique-add");
 const inputverifi = document.querySelectorAll('input[type="number"]');
+const lw = document.getElementById("lw");
+const st = document.getElementById("st");
+const rw = document.getElementById("rw");
+const lCm = document.getElementById("l-cm");
+const cAm = document.getElementById("cam");
+const rCm = document.getElementById("r-cm");
+const lb = document.getElementById("lb");
+const lCb = document.getElementById("l-cb");
+const rCb = document.getElementById("r-cb");
+const rb = document.getElementById("rb");
+const gk = document.getElementById("gk");
+
+
 
   for (let i = 0; i < inputverifi.length; i++) {
   inputverifi[i].addEventListener("input", function () {
@@ -461,10 +474,18 @@ const inputverifi = document.querySelectorAll('input[type="number"]');
 }
 
 btnAddTeamPlayer.addEventListener("click", function () {
-  if (playerName.value.trim() !== "" && playerPosition.value.trim() !== "" && paceStatu.value.trim() !== "" && shootingStatu.value.trim() !== "" && passingStatu.value.trim() !== "" && dribblinStatu.value.trim() !== "" && defendingStatu.value.trim() !== "" && physicalStatu.value.trim() !== "") {
+  if (playerName.value.trim() !== "" && playerPosition.value !== "" && paceStatu.value.trim() !== "" && shootingStatu.value.trim() !== "" && passingStatu.value.trim() !== "" && dribblinStatu.value.trim() !== "" && defendingStatu.value.trim() !== "" && physicalStatu.value.trim() !== "") {
     addToArray(playerName.value, playerPosition.value, paceStatu.value, shootingStatu.value, passingStatu.value, dribblinStatu.value, defendingStatu.value, physicalStatu.value);
-    console.log(addToArray());
-    addToPlan();
+    console.log(players);
+    addToPlan(playerName.value, playerPosition.value, paceStatu.value, shootingStatu.value, passingStatu.value, dribblinStatu.value, defendingStatu.value, physicalStatu.value);
+    // playerName.value = "";
+    // playerPosition.value = "";
+    // paceStatu.value = "";
+    // shootingStatu.value = "";
+    // passingStatu.value = "";
+    // dribblinStatu.value = "";
+    // defendingStatu.value = "";
+    // physicalStatu.value = "";
   }else {
     alert("please entre the corect info !");
   }
@@ -475,6 +496,7 @@ function addToArray(name, position, pace, shooting, passing, dribbling, defendin
   let playeradded = {
     "name" : name,
     "position" : position,
+    "rating" : Math.floor((Number(pace) + Number(shooting) + Number(passing) + Number(dribbling) + Number(defending) + Number(physical)) / 6),
     "pace" : pace,
     "shooting" : shooting,
     "passing" : passing,
@@ -485,55 +507,104 @@ function addToArray(name, position, pace, shooting, passing, dribbling, defendin
   players.push(playeradded);
 }
 
-function addToPlan() {
+function addToPlan(name, position, pace, shooting, passing, dribbling, defending, physical) {
   let divPlayerCard = document.createElement("div");
   divPlayerCard.innerHTML =`
-   <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[36rem] h-[52rem] flex flex-col ">
-            <div class="flex justify-center items-center gap-16 mt-[6.2rem]">
-                <span class="flex flex-col mt-[-11.5rem] mr-[-9rem]">
-                    <p class="text-5xl font-bold text-white">99</p>
-                    <p class="text-3xl text-white">CF</p>
-                </span>
-                <div class="bg-[url('img/messi.png')] bg-cover bg-no-repeat w-[27.5rem] h-[26.5rem] ">
-                </div> 
+<button type="button" class="flex flex-col items-center">
+    <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+        <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
+            <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
+                <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(pace) + Number(shooting) + Number(passing) + Number(dribbling) + Number(defending) + Number(physical)) / 6)}</p>
+                <p class="text-[0.625rem] text-white">${position}</p>
+            </span>
+            <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
             </div>
-            <div class="flex flex-col items-center mt-1 gap-6">
-                <p class="text-5xl text-center font-medium text-white">Messi</p>
-                <div class="flex justify-center gap-8 ml-5">
-                    <div>
-                        <p class="text-2xl font-normal text-white">PAC</p>
-                        <p class="text-[2rem] font-bold text-white">93</p>
-                    </div>
-                    <div>
-                        <p class="text-2xl font-normal text-white">SHO</p>
-                        <p class="text-[2rem] font-bold text-white">98</p>
-                    </div>
-                    <div>
-                        <p class="text-2xl font-normal text-white">PAS</p>
-                        <p class="text-[2rem] font-bold text-white">99</p>
-                    </div>
-                    <div>
-                        <p class="text-2xl font-normal text-white">DRI</p>
-                        <p class="text-[2rem] font-bold text-white">99</p>
-                    </div>
-                    <div>
-                        <p class="text-2xl font-normal text-white">DEF</p>
-                        <p class="text-[2rem] font-bold text-white">46</p>
-                    </div>
-                    <div>
-                        <p class="text-2xl font-normal text-white">PHY</p>
-                        <p class="text-[2rem] font-bold text-white">82</p>
-                    </div>
+        </div>
+         <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
+            <div class=" mt-1">
+                <p class="text-[0.650rem] font-medium text-white">${name}</p>
+            </div>
+            <div class="flex justify-center gap-1">
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">PAC</p>
+                    <p class="text-[0.5rem] font-bold text-white">${pace}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">SHO</p>
+                    <p class="text-[0.5rem] font-bold text-white">${shooting}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">PAS</p>
+                    <p class="text-[0.5rem] font-bold text-white">${passing}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">DRI</p>
+                    <p class="text-[0.5rem] font-bold text-white">${dribbling}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">DEF</p>
+                    <p class="text-[0.5rem] font-bold text-white">${defending}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">PHY</p>
+                    <p class="text-[0.5rem] font-bold text-white">${physical}</p>
                 </div>
             </div>
-            <div class="flex justify-center items-center gap-6 ml-5">
-                <img src="img/argentina.webp" class="w-12" alt="">
-                <img src="img/msl.webp" class="w-11" alt="">
-                <img src="img/inter.webp" class="w-12" alt="">
+            <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
+                <img src="/img/argentina.webp" class="w-2" alt="">
+                <img src="/img/msl.webp" class="w-2" alt="">
+                <img src="/img/inter.webp" class="w-2" alt="">
             </div>
-    
-   </div>
+         </div>
+        
+    </div>
+</button>
   `
 
+  addPositionToPlan(position, divPlayerCard); 
 }
 
+function addPositionToPlan(planPosition, divPlayerCard){
+  switch (planPosition) {
+    case "LW":
+      lw.innerHTML="";
+      lw.appendChild(divPlayerCard);
+      break;
+    case "ST":
+      st.innerHTML="";
+      st.appendChild(divPlayerCard);
+      break;
+    case "RW":
+      rw.innerHTML="";
+      rw.appendChild(divPlayerCard);
+      break;
+    case "LCM":
+      lCm.innerHTML="";
+      lCm.appendChild(divPlayerCard);
+      break;
+    case "CAM":
+      cAm.innerHTML="";
+      cAm.appendChild(divPlayerCard);
+      break;
+    case "RCM":
+      rCm.innerHTML="";
+      rCm.appendChild(divPlayerCard);
+      break;
+    case "LB":
+      lb.innerHTML="";
+      lb.appendChild(divPlayerCard);
+      break;
+    case "LCB":
+      lCb.innerHTML="";
+      lCb.appendChild(divPlayerCard);
+      break;
+    case "RCB":
+      rCb.innerHTML="";
+      rCb.appendChild(divPlayerCard);
+      break;
+    case "RB":
+      rb.innerHTML="";
+      rb.appendChild(divPlayerCard);
+      break;
+  }
+}
