@@ -334,3 +334,55 @@
 
 
 
+
+
+
+<button type="button" class="flex flex-col items-center">
+    <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+        <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
+            <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
+                <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(pace) + Number(shooting) + Number(passing) + Number(dribbling) + Number(defending) + Number(physical)) / 6)}</p>
+                <p class="text-[0.625rem] text-white">${position}</p>
+            </span>
+            <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+            </div>
+        </div>
+         <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
+            <div class=" mt-1">
+                <p class="text-[0.650rem] font-medium text-white">${name}</p>
+            </div>
+            <div class="flex justify-center gap-1">
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">PAC</p>
+                    <p class="text-[0.5rem] font-bold text-white">${pace}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">SHO</p>
+                    <p class="text-[0.5rem] font-bold text-white">${shooting}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">PAS</p>
+                    <p class="text-[0.5rem] font-bold text-white">${passing}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">DRI</p>
+                    <p class="text-[0.5rem] font-bold text-white">${dribbling}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">DEF</p>
+                    <p class="text-[0.5rem] font-bold text-white">${defending}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">PHY</p>
+                    <p class="text-[0.5rem] font-bold text-white">${physical}</p>
+                </div>
+            </div>
+            <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
+                <img src="/img/argentina.webp" class="w-2" alt="">
+                <img src="/img/msl.webp" class="w-2" alt="">
+                <img src="/img/inter.webp" class="w-2" alt="">
+            </div>
+         </div>
+        
+    </div>
+</button>

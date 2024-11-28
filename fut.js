@@ -37,6 +37,7 @@ const btnAddTeamPlayer = document.getElementById("add-team-player");
 const btnAddGkPlayer = document.getElementById("add-team-gk");
 let addStatiqueChoise = document.getElementById("statique-add");
 const inputverifi = document.querySelectorAll('input[type="number"]');
+const inputverifitext = document.querySelectorAll('input[type="text"]');
 const lw = document.getElementById("lw");
 const st = document.getElementById("st");
 const rw = document.getElementById("rw");
@@ -54,11 +55,16 @@ let replacements = [];
 let occupiedPositions = {};
 
 
-  for (let i = 0; i < inputverifi.length; i++) {
+for (let i = 0; i < inputverifi.length; i++) {
   inputverifi[i].addEventListener("input", function () {
-    if (this.value.length > 2) {
-      this.value = this.value.slice(0, 2); 
+    if (!/^\d{0,2}$/.test(this.value)) {
+      this.value = this.value.replace(/[^\d]/g, '').slice(0, 2); 
     }
+  });
+}
+for (let i = 0; i < inputverifitext.length; i++) {
+  inputverifitext[i].addEventListener("input", function () {
+    this.value = this.value.replace(/[^a-zA-Z]/g, '');
   });
 }
 
@@ -68,14 +74,26 @@ btnAddTeamPlayer.addEventListener("click", function () {
   if (playerName.value.trim() !== "" && playerPosition.value !== "" && paceStatu.value.trim() !== "" && shootingStatu.value.trim() !== "" && passingStatu.value.trim() !== "" && dribblinStatu.value.trim() !== "" && defendingStatu.value.trim() !== "" && physicalStatu.value.trim() !== "") {
     
     if (occupiedPositions[playerPosition.value]) {
-      alert("This position is already occupied! Please choose another position.");
+      replacements.push({
+        "name": playerName.value,
+        "position": playerPosition.value,
+        "rating": Math.floor((Number(paceStatu.value) + Number(shootingStatu.value) + Number(passingStatu.value) + Number(dribblinStatu.value) + Number(defendingStatu.value) + Number(physicalStatu.value)) / 6),
+        "pace": paceStatu.value,
+        "shooting": shootingStatu.value,
+        "passing": passingStatu.value,
+        "dribbling": dribblinStatu.value,
+        "defending": defendingStatu.value,
+        "physical": physicalStatu.value
+      });
+
+      updateReplacement(playerName.value, playerPosition.value, paceStatu.value, shootingStatu.value, passingStatu.value, dribblinStatu.value, defendingStatu.value, physicalStatu.value);
     } else {
 
       if (PlayerPlanCount < 10) {
         addToArray(playerName.value, playerPosition.value, paceStatu.value, shootingStatu.value, passingStatu.value, dribblinStatu.value, defendingStatu.value, physicalStatu.value);
         addToPlan(playerName.value, playerPosition.value, paceStatu.value, shootingStatu.value, passingStatu.value, dribblinStatu.value, defendingStatu.value, physicalStatu.value);
         PlayerPlanCount++;
-
+        
         occupiedPositions[playerPosition.value] = playerName.value;
 
         // playerName.value = "";
@@ -87,19 +105,7 @@ btnAddTeamPlayer.addEventListener("click", function () {
         // defendingStatu.value = "";
         // physicalStatu.value = "";
       } else {
-        replacements.push({
-          "name": playerName.value,
-          "position": playerPosition.value,
-          "rating": Math.floor((Number(paceStatu.value) + Number(shootingStatu.value) + Number(passingStatu.value) + Number(dribblinStatu.value) + Number(defendingStatu.value) + Number(physicalStatu.value)) / 6),
-          "pace": paceStatu.value,
-          "shooting": shootingStatu.value,
-          "passing": passingStatu.value,
-          "dribbling": dribblinStatu.value,
-          "defending": defendingStatu.value,
-          "physical": physicalStatu.value
-        });
-
-        updateReplacement(playerName.value, playerPosition.value, paceStatu.value, shootingStatu.value, passingStatu.value, dribblinStatu.value, defendingStatu.value, physicalStatu.value);
+        alert('the player added to replacement!');
       }
     }
   } else {
@@ -115,6 +121,8 @@ btnAddGkPlayer.addEventListener("click", function () {
       addToArrayA(gkName.value, playerGkPosition.value, divingStatu.value, handlingStatu.value, kickingStatu.value, reflexesStatu.value, speedStatu.value, positioningStatu.value);
       console.log(players);
       addGkToPlan(gkName.value, playerGkPosition.value, divingStatu.value, handlingStatu.value, kickingStatu.value, reflexesStatu.value, speedStatu.value, positioningStatu.value);
+      gkPlanCount++;
+      
       // playerName.value = "";
       // playerPosition.value = "";
       // paceStatu.value = "";
@@ -125,7 +133,7 @@ btnAddGkPlayer.addEventListener("click", function () {
       // physicalStatu.value = "";
     } else {
         replacements.push({
-          "name": playerName.value,
+          "name": gkName.value,
           "position": playerGkPosition.value,
           "rating": Math.floor((Number(divingStatu.value) + Number(handlingStatu.value) + Number(kickingStatu.value) + Number(reflexesStatu.value) + Number(speedStatu.value) + Number(positioningStatu.value)) / 6),
           "diving": divingStatu.value,
@@ -136,7 +144,8 @@ btnAddGkPlayer.addEventListener("click", function () {
           "positioning": positioningStatu.value
         });
 
-    updateReplacementGK(playerName.value, playerGkPosition.value, divingStatu.value, handlingStatu.value, kickingStatu.value, reflexesStatu.value, speedStatu.value, positioningStatu.value);
+    updateReplacementGK(gkName.value, playerGkPosition.value, divingStatu.value, handlingStatu.value, kickingStatu.value, reflexesStatu.value, speedStatu.value, positioningStatu.value);
+    
     }
 
   }else {
@@ -178,7 +187,7 @@ function addToArrayA(name, position, diving, handling, kicking, reflexes, speed,
 function addToPlan(name, position, pace, shooting, passing, dribbling, defending, physical) {
   let divPlayerCard = document.createElement("div");
   divPlayerCard.innerHTML =`
-<button type="button" class="flex flex-col items-center">
+<button type="button" class="flex flex-col items-center  hover:scale-150 transition-all duration-500">
     <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
             <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
@@ -234,8 +243,9 @@ function addToPlan(name, position, pace, shooting, passing, dribbling, defending
 
 function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed, positioning) {
   let divPlayerCard = document.createElement("div");
+  gk.innerHTML = "";
   divPlayerCard.innerHTML =`
-<button type="button" class="flex flex-col items-center">
+<button type="button" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
     <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
             <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
@@ -285,8 +295,8 @@ function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed,
     </div>
 </button>
   `
-
-  addPositionGkToPlan(position,divPlayerCard); 
+  
+  gk.appendChild(divPlayerCard);
 }
 
 function addPositionToPlan(planPosition, divPlayerCard){
@@ -334,14 +344,7 @@ function addPositionToPlan(planPosition, divPlayerCard){
   }
 }
 
-function addPositionGkToPlan(planPosition, divPlayerCard){
-  switch (planPosition) {
-    case "GK":
-      gk.innerHTML="";
-      gk.appendChild(divPlayerCard);
-      break;
-  }
-}
+
 
 function updateReplacement(name, position, pace, shooting, passing, dribbling, defending, physical) {
   let replacementList = document.getElementById("replacement-list");
@@ -355,7 +358,7 @@ function updateReplacement(name, position, pace, shooting, passing, dribbling, d
   let li = document.createElement("li");
   li.classList.add('list-none');
   li.innerHTML = `
-<button type="button" class="flex flex-col items-center">
+<button type="button" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
   <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
       <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
           <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
@@ -419,7 +422,7 @@ function updateReplacementGK(name, position, diving, handling, kicking, reflexes
   let li = document.createElement("li");
   li.classList.add('list-none');
   li.innerHTML = `
-<button type="button" class="flex flex-col items-center">
+<button type="button" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
   <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
       <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
           <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
