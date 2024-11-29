@@ -52,7 +52,11 @@ let gk = document.getElementById("gk");
 let PlayerPlanCount = 0;
 let gkPlanCount = 0;
 let replacements = [];
+console.log(replacements);
+
 let planPlayers = [];
+console.log(planPlayers);
+
 
 
 let occupiedPositions = {};
@@ -222,6 +226,9 @@ function addToArrayA(name, position, diving, handling, kicking, reflexes, speed,
 }
 
 function addToPlan(name, position, pace, shooting, passing, dribbling, defending, physical) {
+    if (occupiedPositions[position]) {
+      alert('the position is plain');
+    } else {
   let divPlayerCard = document.createElement("div");
   divPlayerCard.innerHTML =`
 <button type="button" class="show-the-roplacement" class="flex flex-col items-center  md:hover:scale-150 md:transition-all md:duration-500">
@@ -273,7 +280,12 @@ function addToPlan(name, position, pace, shooting, passing, dribbling, defending
         
     </div>
 </button>
+      <button class="delete mr-3 text-white bg-red-500 hover:bg-red-700 hover:scale-150 rounded-full px-1 py-1"></button>
+
   `;
+
+
+
 
   let button = divPlayerCard.querySelector("button");
   button.addEventListener("click", function () {
@@ -294,7 +306,13 @@ function addToPlan(name, position, pace, shooting, passing, dribbling, defending
   }
  
   planPlayers.push(playerAdded);
+
+  const deleteButton = divPlayerCard.querySelector(".delete");
+  deleteButton.addEventListener("click", function () {
+    deletePlayer(name, position, divPlayerCard);
+  });
  
+}
 }
 
 function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed, positioning) {
@@ -479,7 +497,9 @@ function updateReplacement(name, position, pace, shooting, passing, dribbling, d
           </div>
        </div>
   </div>
-</button>`;
+</button>
+      
+`;
 
 
 replacementList.appendChild(li);
@@ -555,18 +575,17 @@ function poopUP(position) {
   let filteredPlayers = replacements.filter(player => player.position === position);
   let popUpReplacement = document.createElement("div");
   popUpReplacement.classList.add("fixed", "top-0", "left-0", "w-full", "h-full", "bg-gray-800", "bg-opacity-50", "flex", "justify-center", "items-center");
-  popUpReplacement.innerHTML = `
-    <div class="bg-gray-500 p-6 rounded-lg shadow-lg w-[42rem]">
-      <h2 class="text-xl font-bold text-center mb-4">Players with the same position: ${position}</h2>
-      <div class="player-replacement-poopup grid grid-cols-5 gap-3">
-      </div>
-      <div class=" flex justify-around">
-      <button class="mt-4 text-white bg-blue-500 hover:bg-blue-700 rounded px-4 py-2" onclick="closePopUp()">Close</button>
-      <button class="mt-4 text-white bg-red-500 hover:bg-red-700 rounded px-4 py-2" onclick="">delete</button>
-      <button class="mt-4 text-white bg-green-500 hover:bg-green-700 rounded px-4 py-2" onclick="">Edit</button>
-      </div>
+  popUpReplacement.innerHTML =  `
+  <div class="bg-gray-500 p-6 rounded-lg shadow-lg w-[42rem]">
+    <h2 class="text-xl font-bold text-center mb-4">Players with the same position: ${position}</h2>
+    <div class="player-replacement-poopup grid grid-cols-4 gap-3">
     </div>
-  `;
+    <div class="flex justify-around">
+    <button class="mt-4 text-white bg-blue-500 hover:bg-blue-700 rounded px-4 py-2" onclick="closePopUp()">Close</button>
+    </div>
+  </div>
+`;
+
   let playerContainer = popUpReplacement.querySelector(".player-replacement-poopup");
   filteredPlayers.forEach(player => {
     if (position !== "GK") {
@@ -616,12 +635,14 @@ function poopUP(position) {
         </div>
       </button>
 
+
       `;
 
       playerCard.addEventListener("click", function() {
         replacePlayerInPlan(player, player.position, player.name); 
         closePopUp(); 
       });  
+
       playerContainer.appendChild(playerCard);
     }else {
       let playerCard = document.createElement("div");
@@ -681,6 +702,12 @@ function poopUP(position) {
       replacePlayerInPlan(player, player.position, player.name); 
       closePopUp(); 
     });  
+    // let deleteButtonGK = popUpReplacement.querySelector("button.bg-red-500");
+    // deleteButtonGK.addEventListener("click", function() {
+    //   deletePlayer(player.name); 
+    //   closePopUp(); 
+    // });
+
     playerContainer.appendChild(playerCard);
     }
   });
@@ -753,7 +780,10 @@ if (player.position !== "GK") {
         </div>
       </button>
 
+
       `;
+
+
       let playerAdded = {
         "name" : player.name,
         "position" : player.position,
@@ -848,9 +878,13 @@ if (player.position !== "GK") {
 
 }
 
-function deletePlayer(name) {
-  const deletePlayerI = planPlayers.findIndex(player => player.name === name);
-  if (deletePlayerI !== -1) {
-    planPlayers.splice(deletePlayerI, 1);
+
+function deletePlayer(name, position, divPlayerCard) {
+  const deletePlayerIndex = planPlayers.findIndex(player => player.name === name);
+  if (deletePlayerIndex !== -1) {
+    let playerToDelete = planPlayers[deletePlayerIndex]
+    delete occupiedPositions[position];
+    planPlayers.splice(deletePlayerIndex, 1);
+    divPlayerCard.remove(); 
   }
 }
