@@ -244,6 +244,11 @@ function addToPlan(name, position, pace, shooting, passing, dribbling, defending
 </button>
   `
 
+  let button = divPlayerCard.querySelector("button");
+  button.addEventListener("click", function () {
+  poopUP(name, position, pace, shooting, passing, dribbling, defending, physical);
+  
+});
   addPositionToPlan(position, divPlayerCard); 
 }
 
@@ -302,6 +307,12 @@ function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed,
 </button>
   `
   
+  let button = divPlayerCard.querySelector("button");
+  button.addEventListener("click", function () {
+    poopUPGk(name, position, diving, handling, kicking, reflexes, speed, positioning);
+    
+  });
+
   gk.appendChild(divPlayerCard);
 }
 
@@ -413,6 +424,7 @@ function updateReplacement(name, position, pace, shooting, passing, dribbling, d
   </div>
 </button>`;
 
+
 replacementList.appendChild(li);
 }
 
@@ -428,56 +440,153 @@ function updateReplacementGK(name, position, diving, handling, kicking, reflexes
   let li = document.createElement("li");
   li.classList.add('list-none');
   li.innerHTML = `
-<button type="button" class="gk-chosed" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
-  <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
-      <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
-          <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
-              <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(diving) + Number(handling) + Number(kicking) + Number(reflexes) + Number(speed) + Number(positioning)) / 6)}</p>
-              <p class="text-[0.625rem] text-white">${position}</p>
-          </span>
-          <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+    <button type="button" class="gk-chosed flex flex-col items-center hover:scale-150 transition-all duration-500">
+      <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+          <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
+              <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
+                  <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(diving) + Number(handling) + Number(kicking) + Number(reflexes) + Number(speed) + Number(positioning)) / 6)}</p>
+                  <p class="text-[0.625rem] text-white">${position}</p>
+              </span>
+              <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+              </div>
           </div>
+           <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
+              <div class="mt-1">
+                  <p class="text-[0.650rem] font-medium text-white">${name}</p>
+              </div>
+              <div class="flex justify-center gap-1">
+                  <div class="text-center">
+                      <p class="text-[0.5rem] font-normal text-white">PAC</p>
+                      <p class="text-[0.5rem] font-bold text-white">${diving}</p>
+                  </div>
+                  <div class="text-center">
+                      <p class="text-[0.5rem] font-normal text-white">SHO</p>
+                      <p class="text-[0.5rem] font-bold text-white">${handling}</p>
+                  </div>
+                  <div class="text-center">
+                      <p class="text-[0.5rem] font-normal text-white">PAS</p>
+                      <p class="text-[0.5rem] font-bold text-white">${kicking}</p>
+                  </div>
+                  <div class="text-center">
+                      <p class="text-[0.5rem] font-normal text-white">DRI</p>
+                      <p class="text-[0.5rem] font-bold text-white">${reflexes}</p>
+                  </div>
+                  <div class="text-center">
+                      <p class="text-[0.5rem] font-normal text-white">DEF</p>
+                      <p class="text-[0.5rem] font-bold text-white">${speed}</p>
+                  </div>
+                  <div class="text-center">
+                      <p class="text-[0.5rem] font-normal text-white">PHY</p>
+                      <p class="text-[0.5rem] font-bold text-white">${positioning}</p>
+                  </div>
+              </div>
+              <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
+                  <img src="/img/argentina.webp" class="w-2" alt="">
+                  <img src="/img/msl.webp" class="w-2" alt="">
+                  <img src="/img/inter.webp" class="w-2" alt="">
+              </div>
+           </div>
       </div>
-       <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
-          <div class=" mt-1">
-              <p class="text-[0.650rem] font-medium text-white">${name}</p>
+    </button>
+  `;
+
+
+  replacementList.appendChild(li);
+}
+
+function poopUP(name, position, pace, shooting, passing, dribbling, defending, physical) {
+  const filteredPlayers = replacements.filter(player => player.position === position);
+  let popUpReplacement = document.createElement("div");
+  popUpReplacement.classList.add("fixed", "top-0", "left-0", "w-full", "h-full", "bg-gray-800", "bg-opacity-50", "flex", "justify-center", "items-center");
+  popUpReplacement.innerHTML = `
+    <div class="bg-white p-6 rounded-lg shadow-lg w-3/4 max-w-4xl">
+      <h2 class="text-xl font-bold text-center mb-4">Players with the same position: ${position}</h2>
+      <div class="player-replacement-poopup grid grid-cols-5 gap-3">
+      </div>
+      <button class="mt-4 text-white bg-blue-500 hover:bg-blue-700 rounded px-4 py-2" onclick="closePopUp()">Close</button>
+    </div>
+  `;
+  const playerContainer = popUpReplacement.querySelector(".player-replacement-poopup");
+  filteredPlayers.forEach(player => {
+    const playerCard = document.createElement("div");
+    playerCard.classList.add("flex", "flex-col", "items-center", "bg-gray-200", "p-4", "rounded-lg", "shadow-md");
+    playerCard.innerHTML = `
+      <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+        <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
+          <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
+            <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(pace) + Number(shooting) + Number(passing) + Number(dribbling) + Number(defending) + Number(physical)) / 6)}</p>
+            <p class="text-[0.625rem] text-white">${player.position}</p>
+          </span>
+          <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]"></div>
+        </div>
+        <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
+          <div class="mt-1">
+            <p class="text-[0.650rem] font-medium text-white">${player.name}</p>
           </div>
           <div class="flex justify-center gap-1">
-              <div class="text-center">
-                  <p class="text-[0.5rem] font-normal text-white">PAC</p>
-                  <p class="text-[0.5rem] font-bold text-white">${diving}</p>
-              </div>
-              <div class="text-center">
-                  <p class="text-[0.5rem] font-normal text-white">SHO</p>
-                  <p class="text-[0.5rem] font-bold text-white">${handling}</p>
-              </div>
-              <div class="text-center">
-                  <p class="text-[0.5rem] font-normal text-white">PAS</p>
-                  <p class="text-[0.5rem] font-bold text-white">${kicking}</p>
-              </div>
-              <div class="text-center">
-                  <p class="text-[0.5rem] font-normal text-white">DRI</p>
-                  <p class="text-[0.5rem] font-bold text-white">${reflexes}</p>
-              </div>
-              <div class="text-center">
-                  <p class="text-[0.5rem] font-normal text-white">DEF</p>
-                  <p class="text-[0.5rem] font-bold text-white">${speed}</p>
-              </div>
-              <div class="text-center">
-                  <p class="text-[0.5rem] font-normal text-white">PHY</p>
-                  <p class="text-[0.5rem] font-bold text-white">${positioning}</p>
-              </div>
+            <div class="text-center">
+              <p class="text-[0.5rem] font-normal text-white">PAC</p>
+              <p class="text-[0.5rem] font-bold text-white">${player.pace}</p>
+            </div>
+            <div class="text-center">
+              <p class="text-[0.5rem] font-normal text-white">SHO</p>
+              <p class="text-[0.5rem] font-bold text-white">${player.shooting}</p>
+            </div>
+            <div class="text-center">
+              <p class="text-[0.5rem] font-normal text-white">PAS</p>
+              <p class="text-[0.5rem] font-bold text-white">${player.passing}</p>
+            </div>
+            <div class="text-center">
+              <p class="text-[0.5rem] font-normal text-white">DRI</p>
+              <p class="text-[0.5rem] font-bold text-white">${player.dribbling}</p>
+            </div>
+            <div class="text-center">
+              <p class="text-[0.5rem] font-normal text-white">DEF</p>
+              <p class="text-[0.5rem] font-bold text-white">${player.defending}</p>
+            </div>
+            <div class="text-center">
+              <p class="text-[0.5rem] font-normal text-white">PHY</p>
+              <p class="text-[0.5rem] font-bold text-white">${player.physical}</p>
+            </div>
           </div>
-          <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
-              <img src="/img/argentina.webp" class="w-2" alt="">
-              <img src="/img/msl.webp" class="w-2" alt="">
-              <img src="/img/inter.webp" class="w-2" alt="">
-          </div>
-       </div>
-  </div>
-</button>`;
+        </div>
+      </div>
+    `;
 
+    playerContainer.appendChild(playerCard);
+  });
 
+  document.body.appendChild(popUpReplacement);
+}
+
+function poopUPGk(name, position, diving, handling, kicking, reflexes, speed, positioning) {
+  let popUpReplacement = document.createElement("div");
+  popUpReplacement.classList.add("fixed", "top-0", "left-0", "w-full", "h-full", "bg-gray-800", "bg-opacity-50", "flex", "justify-center", "items-center");
+  popUpReplacement.innerHTML = `
+    <div class="bg-white p-4 rounded-lg shadow-lg w-1/3">
+      <h3 class="text-lg font-bold text-gray-800 mb-2">Player Details</h3>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Position:</strong> ${position}</p>
+      <p><strong>Stats:</strong></p>
+      <ul class="list-none">
+        <li><strong>Divining:</strong> ${diving}</li>
+        <li><strong>Handling:</strong> ${handling}</li>
+        <li><strong>Kicking:</strong> ${kicking}</li>
+        <li><strong>Reflexes:</strong> ${reflexes}</li>
+        <li><strong>Speed:</strong> ${speed}</li>
+        <li><strong>Positioning:</strong> ${positioning}</li>
+      </ul>
+      <button class="mt-4 text-white bg-blue-500 hover:bg-blue-700 rounded px-4 py-2" onclick="closePopUp()">Close</button>
+      <button class="mt-4 text-white bg-blue-500 hover:bg-blue-700 rounded px-4 py-2" onclick="">Edit</button>
+    </div>
+  `;
+  document.body.appendChild(popUpReplacement);
+}
+
+function closePopUp() {
+  let popUp = document.querySelector(".fixed");
+    popUp.remove();
+  
 }
 
 
