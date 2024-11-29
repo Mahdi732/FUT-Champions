@@ -232,13 +232,13 @@ function addToPlan(name, position, pace, shooting, passing, dribbling, defending
   let divPlayerCard = document.createElement("div");
   divPlayerCard.innerHTML =`
 <button type="button" class="show-the-roplacement" class="flex flex-col items-center  md:hover:scale-150 md:transition-all md:duration-500">
-    <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+    <div class="bg-[url('../img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
             <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
                 <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(pace) + Number(shooting) + Number(passing) + Number(dribbling) + Number(defending) + Number(physical)) / 6)}</p>
                 <p class="text-[0.625rem] text-white">${position}</p>
             </span>
-            <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+            <div class="bg-[url('../img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
             </div>
         </div>
          <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
@@ -272,9 +272,9 @@ function addToPlan(name, position, pace, shooting, passing, dribbling, defending
                 </div>
             </div>
             <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
-                <img src="/img/argentina.webp" class="w-2" alt="">
-                <img src="/img/msl.webp" class="w-2" alt="">
-                <img src="/img/inter.webp" class="w-2" alt="">
+                <img src="../img/argentina.webp" class="w-2" alt="">
+                <img src="../img/msl.webp" class="w-2" alt="">
+                <img src="../img/inter.webp" class="w-2" alt="">
             </div>
          </div>
         
@@ -320,13 +320,13 @@ function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed,
   gk.innerHTML = "";
   divPlayerCard.innerHTML =`
 <button type="button" class="show-the-gk-roplacement" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
-    <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+    <div class="bg-[url('................/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
             <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
                 <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(diving) + Number(handling) + Number(kicking) + Number(reflexes) + Number(speed) + Number(positioning)) / 6)}</p>
                 <p class="text-[0.625rem] text-white">${position}</p>
             </span>
-            <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+            <div class="bg-[url('................/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
             </div>
         </div>
          <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
@@ -360,9 +360,9 @@ function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed,
                 </div>
             </div>
             <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
-                <img src="/img/argentina.webp" class="w-2" alt="">
-                <img src="/img/msl.webp" class="w-2" alt="">
-                <img src="/img/inter.webp" class="w-2" alt="">
+                <img src="............../img/argentina.webp" class="w-2" alt="">
+                <img src="............../img/msl.webp" class="w-2" alt="">
+                <img src="............../img/inter.webp" class="w-2" alt="">
             </div>
          </div>
         
@@ -451,13 +451,13 @@ function updateReplacement(name, position, pace, shooting, passing, dribbling, d
   li.classList.add('list-none');
   li.innerHTML = `
 <button type="button" class="player-chosed" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
-  <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+  <div class="bg-[url('............/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
       <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
           <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
               <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(pace) + Number(shooting) + Number(passing) + Number(dribbling) + Number(defending) + Number(physical)) / 6)}</p>
               <p class="text-[0.625rem] text-white">${position}</p>
           </span>
-          <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+          <div class="bg-[url('............/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
           </div>
       </div>
        <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
@@ -491,9 +491,9 @@ function updateReplacement(name, position, pace, shooting, passing, dribbling, d
               </div>
           </div>
           <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
-              <img src="/img/argentina.webp" class="w-2" alt="">
-              <img src="/img/msl.webp" class="w-2" alt="">
-              <img src="/img/inter.webp" class="w-2" alt="">
+              <img src="........../img/argentina.webp" class="w-2" alt="">
+              <img src="........../img/msl.webp" class="w-2" alt="">
+              <img src="........../img/inter.webp" class="w-2" alt="">
           </div>
        </div>
   </div>
@@ -518,13 +518,13 @@ function updateReplacementGK(name, position, diving, handling, kicking, reflexes
   li.classList.add('list-none');
   li.innerHTML = `
     <button type="button" class="gk-chosed flex flex-col items-center hover:scale-150 transition-all duration-500">
-      <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+      <div class="bg-[url('......../img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
           <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
               <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
                   <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(diving) + Number(handling) + Number(kicking) + Number(reflexes) + Number(speed) + Number(positioning)) / 6)}</p>
                   <p class="text-[0.625rem] text-white">${position}</p>
               </span>
-              <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+              <div class="bg-[url('......../img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
               </div>
           </div>
            <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
@@ -558,9 +558,9 @@ function updateReplacementGK(name, position, diving, handling, kicking, reflexes
                   </div>
               </div>
               <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
-                  <img src="/img/argentina.webp" class="w-2" alt="">
-                  <img src="/img/msl.webp" class="w-2" alt="">
-                  <img src="/img/inter.webp" class="w-2" alt="">
+                  <img src="....../img/argentina.webp" class="w-2" alt="">
+                  <img src="....../img/msl.webp" class="w-2" alt="">
+                  <img src="....../img/inter.webp" class="w-2" alt="">
               </div>
            </div>
       </div>
@@ -593,13 +593,13 @@ function poopUP(position) {
       playerCard.classList.add("flex", "flex-col", "items-center", "bg-gray-200", "p-4", "rounded-lg", "shadow-md");
       playerCard.innerHTML = `
       <button type="button" class=" flex flex-col items-center hover:scale-150 transition-all duration-500">
-        <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+        <div class="bg-[url('../img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
           <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
             <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
               <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(player.pace) + Number(player.shooting) + Number(player.passing) + Number(player.dribbling) + Number(player.defending) + Number(player.physical)) / 6)}</p>
               <p class="text-[0.625rem] text-white">${player.position}</p>
             </span>
-            <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]"></div>
+            <div class="bg-[url('../img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]"></div>
           </div>
           <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
             <div class="mt-1">
@@ -649,13 +649,13 @@ function poopUP(position) {
       playerCard.classList.add("flex", "flex-col", "items-center", "bg-gray-200", "p-4", "rounded-lg", "shadow-md");
       playerCard.innerHTML =  `
       <button type="button" class=" flex flex-col items-center hover:scale-150 transition-all duration-500">
-        <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+        <div class="bg-[url('..../img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
             <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
                 <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
                     <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(player.diving) + Number(player.handling) + Number(player.kicking) + Number(player.reflexes) + Number(player.speed) + Number(player.positioning)) / 6)}</p>
                     <p class="text-[0.625rem] text-white">${player.position}</p>
                 </span>
-                <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+                <div class="bg-[url('..../img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
                 </div>
             </div>
              <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
@@ -689,9 +689,9 @@ function poopUP(position) {
                     </div>
                 </div>
                 <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
-                    <img src="/img/argentina.webp" class="w-2" alt="">
-                    <img src="/img/msl.webp" class="w-2" alt="">
-                    <img src="/img/inter.webp" class="w-2" alt="">
+                    <img src="../img/argentina.webp" class="w-2" alt="">
+                    <img src="../img/msl.webp" class="w-2" alt="">
+                    <img src="../img/inter.webp" class="w-2" alt="">
                 </div>
              </div>
         </div>
@@ -738,14 +738,14 @@ if (player.position !== "GK") {
   let divPlayerCard = document.createElement("div");
   divPlayerCard.innerHTML =`
       <button type="button" class=" flex flex-col items-center hover:scale-150 transition-all duration-500">
-        <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+        <div class="bg-[url('../img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
           <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
             <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
               <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(player.pace) + Number(player.shooting) + Number(player.passing) + Number(player.dribbling) + Number(player.defending) + Number(player.physical)) / 6)}</p>
               <p class="text-[0.625rem] text-white">${player.position}</p>
             </span>
-            <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]"></div>
-          </div>
+            <div class="bg-[url('../img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]"></div>
+          </div>..
           <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
             <div class="mt-1">
               <p class="text-[0.650rem] font-medium text-white">${player.name}</p>
@@ -805,13 +805,13 @@ if (player.position !== "GK") {
   let divPlayerCard = document.createElement("div");
   divPlayerCard.innerHTML =`
 <button type="button" class="show-the-gk-roplacement" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
-    <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+    <div class="bg-[url('..../img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
             <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
                 <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(player.diving) + Number(player.handling) + Number(player.kicking) + Number(player.reflexes) + Number(player.speed) + Number(player.positioning)) / 6)}</p>
                 <p class="text-[0.625rem] text-white">${player.position}</p>
             </span>
-            <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+            <div class="bg-[url('..../img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
             </div>
         </div>
          <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
@@ -845,9 +845,9 @@ if (player.position !== "GK") {
                 </div>
             </div>
             <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
-                <img src="/img/argentina.webp" class="w-2" alt="">
-                <img src="/img/msl.webp" class="w-2" alt="">
-                <img src="/img/inter.webp" class="w-2" alt="">
+                <img src="../img/argentina.webp" class="w-2" alt="">
+                <img src="../img/msl.webp" class="w-2" alt="">
+                <img src="../img/inter.webp" class="w-2" alt="">
             </div>
          </div>
         
