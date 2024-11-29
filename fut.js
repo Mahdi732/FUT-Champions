@@ -54,6 +54,7 @@ let gkPlanCount = 0;
 let replacements = [];
 let planPlayers = [];
 console.log(planPlayers);
+console.log(replacements);
 
 let occupiedPositions = {};
 let playerChosed = document.querySelectorAll(".player-chosed");
@@ -124,9 +125,8 @@ btnAddTeamPlayer.addEventListener("click", function () {
 
 btnAddGkPlayer.addEventListener("click", function () {
   if (gkName.value.trim() !== "" && playerGkPosition.value !== "" && divingStatu.value.trim() !== "" && handlingStatu.value.trim() !== "" && kickingStatu.value.trim() !== "" && reflexesStatu.value.trim() !== "" && speedStatu.value.trim() !== "" && positioningStatu.value.trim() !== "") {
-    if (gkPlanCount <= 1) {
+    if (gkPlanCount < 1) {
       addToArrayA(gkName.value, playerGkPosition.value, divingStatu.value, handlingStatu.value, kickingStatu.value, reflexesStatu.value, speedStatu.value, positioningStatu.value);
-      console.log(players);
       addGkToPlan(gkName.value, playerGkPosition.value, divingStatu.value, handlingStatu.value, kickingStatu.value, reflexesStatu.value, speedStatu.value, positioningStatu.value);
       gkPlanCount++;
       
@@ -262,7 +262,7 @@ function addToPlan(name, position, pace, shooting, passing, dribbling, defending
     "defending" : defending,
     "physical" : physical
   }
-
+ 
   planPlayers.push(playerAdded);
  
 }
@@ -329,6 +329,18 @@ function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed,
   });
 
   gk.appendChild(divPlayerCard);
+  let playerGKAdded = {
+    "name" : name,
+    "position" : position,
+    "rating" : Math.floor((Number(diving) + Number(handling) + Number(kicking) + Number(reflexes) + Number(speed) + Number(positioning)) / 6),
+    "diving" : diving,
+    "handling" : handling,
+    "kicking" : kicking,
+    "reflexes" : reflexes,
+    "speed" : speed,
+    "positioning" : positioning
+  }
+  planPlayers.push(playerGKAdded);
 }
 
 function addPositionToPlan(planPosition, divPlayerCard){
@@ -573,7 +585,7 @@ function poopUP(position) {
       `;
 
       playerCard.addEventListener("click", function() {
-        replacePlayerInPlan(player); 
+        replacePlayerInPlan(player, player.position, player.name); 
         closePopUp(); 
       });  
       playerContainer.appendChild(playerCard);
@@ -630,6 +642,11 @@ function poopUP(position) {
         </div>
       </button>
     `;
+
+    playerCard.addEventListener("click", function() {
+      replacePlayerInPlan(player, player.position, player.name); 
+      closePopUp(); 
+    });  
     playerContainer.appendChild(playerCard);
     }
   });
@@ -643,7 +660,18 @@ function closePopUp() {
   
 }
 
-function replacePlayerInPlan(player) {
+function replacePlayerInPlan(player, position, name) {
+  let existingPlayerIndex = planPlayers.findIndex(player => player.position === position);
+  if (existingPlayerIndex !== -1) {
+    let existingPlayer = planPlayers[existingPlayerIndex];
+    replacements.push(existingPlayer);
+    planPlayers.splice(existingPlayerIndex, 1);
+  }
+  let playerIndexInReplacements = replacements.findIndex(playerReplacement => playerReplacement.name === name);
+  if (playerIndexInReplacements !== -1) {
+    replacements.splice(playerIndexInReplacements, 1);
+  }
+if (player.position !== "GK") {
   let divPlayerCard = document.createElement("div");
   divPlayerCard.innerHTML =`
       <button type="button" class=" flex flex-col items-center hover:scale-150 transition-all duration-500">
@@ -690,8 +718,96 @@ function replacePlayerInPlan(player) {
       </button>
 
       `;
+      let playerAdded = {
+        "name" : player.name,
+        "position" : player.position,
+        "rating" : Math.floor((Number(player.pace) + Number(player.shooting) + Number(player.passing) + Number(player.dribbling) + Number(player.defending) + Number(player.physical)) / 6),
+        "pace" : player.pace,
+        "shooting" : player.shooting,
+        "passing" : player.passing,
+        "dribbling" : player.dribbling,
+        "defending" : player.defending,
+        "physical" : player.physical
+      }
+      planPlayers.push(playerAdded);
+
       divPlayerCard.querySelector("button").addEventListener("click", function() {
         poopUP(player.position);
       });
   addPositionToPlan(player.position, divPlayerCard); 
+}else {
+  let divPlayerCard = document.createElement("div");
+  divPlayerCard.innerHTML =`
+<button type="button" class="show-the-gk-roplacement" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
+    <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+        <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
+            <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
+                <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(player.diving) + Number(player.handling) + Number(player.kicking) + Number(player.reflexes) + Number(player.speed) + Number(player.positioning)) / 6)}</p>
+                <p class="text-[0.625rem] text-white">${player.position}</p>
+            </span>
+            <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+            </div>
+        </div>
+         <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
+            <div class=" mt-1">
+                <p class="text-[0.650rem] font-medium text-white">${player.name}</p>
+            </div>
+            <div class="flex justify-center gap-1">
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">PAC</p>
+                    <p class="text-[0.5rem] font-bold text-white">${player.diving}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">SHO</p>
+                    <p class="text-[0.5rem] font-bold text-white">${player.handling}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">PAS</p>
+                    <p class="text-[0.5rem] font-bold text-white">${player.kicking}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">DRI</p>
+                    <p class="text-[0.5rem] font-bold text-white">${player.reflexes}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">DEF</p>
+                    <p class="text-[0.5rem] font-bold text-white">${player.speed}</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[0.5rem] font-normal text-white">PHY</p>
+                    <p class="text-[0.5rem] font-bold text-white">${player.positioning}</p>
+                </div>
+            </div>
+            <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
+                <img src="/img/argentina.webp" class="w-2" alt="">
+                <img src="/img/msl.webp" class="w-2" alt="">
+                <img src="/img/inter.webp" class="w-2" alt="">
+            </div>
+         </div>
+        
+    </div>
+</button>
+  `;
+  let playerGKAdded = {
+    "name" : player.name,
+    "position" : player.position,
+    "rating" : Math.floor((Number(player.diving) + Number(player.handling) + Number(player.kicking) + Number(player.reflexes) + Number(player.speed) + Number(player.positioning)) / 6),
+    "diving" : player.diving,
+    "handling" : player.handling,
+    "kicking" : player.kicking,
+    "reflexes" : player.reflexes,
+    "speed" : player.speed,
+    "positioning" : player.positioning
+  }
+  planPlayers.push(playerGKAdded);
+  
+  let button = divPlayerCard.querySelector("button");
+  button.addEventListener("click", function () {
+    poopUP(player.position);
+    
+  });
+  gk.innerHTML = "";
+  gk.appendChild(divPlayerCard);
+}
+ 
 }
