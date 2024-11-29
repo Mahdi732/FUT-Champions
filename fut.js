@@ -1,5 +1,5 @@
 let players = [];
-console.log(players);
+
 
 const menuToggle = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -52,7 +52,13 @@ const gk = document.getElementById("gk");
 let PlayerPlanCount = 0;
 let gkPlanCount = 0;
 let replacements = [];
+console.log(replacements);
+
 let occupiedPositions = {};
+let playerChosed = document.querySelectorAll(".player-chosed");
+let showTheGkRoplacement = document.querySelectorAll(".show-the-gk-roplacement");
+let gkChosed = document.querySelectorAll(".gk-chosed");
+let showTheRoplacement = document.querySelectorAll(".show-the-roplacement");
 
 
 for (let i = 0; i < inputverifi.length; i++) {
@@ -187,7 +193,7 @@ function addToArrayA(name, position, diving, handling, kicking, reflexes, speed,
 function addToPlan(name, position, pace, shooting, passing, dribbling, defending, physical) {
   let divPlayerCard = document.createElement("div");
   divPlayerCard.innerHTML =`
-<button type="button" class="flex flex-col items-center  hover:scale-150 transition-all duration-500">
+<button type="button" class="show-the-roplacement" class="flex flex-col items-center  md:hover:scale-150 md:transition-all md:duration-500">
     <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
             <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
@@ -245,7 +251,7 @@ function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed,
   let divPlayerCard = document.createElement("div");
   gk.innerHTML = "";
   divPlayerCard.innerHTML =`
-<button type="button" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
+<button type="button" class="show-the-gk-roplacement" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
     <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
             <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
@@ -358,7 +364,7 @@ function updateReplacement(name, position, pace, shooting, passing, dribbling, d
   let li = document.createElement("li");
   li.classList.add('list-none');
   li.innerHTML = `
-<button type="button" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
+<button type="button" class="player-chosed" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
   <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
       <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
           <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
@@ -422,7 +428,7 @@ function updateReplacementGK(name, position, diving, handling, kicking, reflexes
   let li = document.createElement("li");
   li.classList.add('list-none');
   li.innerHTML = `
-<button type="button" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
+<button type="button" class="gk-chosed" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
   <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
       <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
           <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
@@ -471,6 +477,7 @@ function updateReplacementGK(name, position, diving, handling, kicking, reflexes
   </div>
 </button>`;
 
-replacementList.appendChild(li);
+
 }
+
 
