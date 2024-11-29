@@ -1,5 +1,5 @@
 let players = [];
-
+console.log(players);
 
 let menuToggle = document.getElementById('menu-toggle');
 let mobileMenu = document.getElementById('mobile-menu');
@@ -53,15 +53,13 @@ let PlayerPlanCount = 0;
 let gkPlanCount = 0;
 let replacements = [];
 let planPlayers = [];
-console.log(planPlayers);
-console.log(replacements);
+
 
 let occupiedPositions = {};
 let playerChosed = document.querySelectorAll(".player-chosed");
 let showTheGkRoplacement = document.querySelectorAll(".show-the-gk-roplacement");
 let gkChosed = document.querySelectorAll(".gk-chosed");
 let showTheRoplacement = document.querySelectorAll(".show-the-roplacement");
-
 
 for (let i = 0; i < inputverifi.length; i++) {
   inputverifi[i].addEventListener("input", function () {
@@ -80,42 +78,58 @@ for (let i = 0; i < inputverifitext.length; i++) {
 btnAddTeamPlayer.addEventListener("click", function () {
 
   if (playerName.value.trim() !== "" && playerPosition.value !== "" && paceStatu.value.trim() !== "" && shootingStatu.value.trim() !== "" && passingStatu.value.trim() !== "" && dribblinStatu.value.trim() !== "" && defendingStatu.value.trim() !== "" && physicalStatu.value.trim() !== "") {
+    if (players.find(player => player.name.toLowerCase() === playerName.value.trim().toLowerCase())) {
+      alert(`The player "${playerName.value}" is already in the team.`);
+    }else {
+        if (occupiedPositions[playerPosition.value]) {
+          replacements.push({
+            "name": playerName.value,
+            "position": playerPosition.value,
+            "rating": Math.floor((Number(paceStatu.value) + Number(shootingStatu.value) + Number(passingStatu.value) + Number(dribblinStatu.value) + Number(defendingStatu.value) + Number(physicalStatu.value)) / 6),
+            "pace": paceStatu.value,
+            "shooting": shootingStatu.value,
+            "passing": passingStatu.value,
+            "dribbling": dribblinStatu.value,
+            "defending": defendingStatu.value,
+            "physical": physicalStatu.value
+          });
+          players.push({
+            "name": playerName.value,
+            "position": playerPosition.value,
+            "rating": Math.floor((Number(paceStatu.value) + Number(shootingStatu.value) + Number(passingStatu.value) + Number(dribblinStatu.value) + Number(defendingStatu.value) + Number(physicalStatu.value)) / 6),
+            "pace": paceStatu.value,
+            "shooting": shootingStatu.value,
+            "passing": passingStatu.value,
+            "dribbling": dribblinStatu.value,
+            "defending": defendingStatu.value,
+            "physical": physicalStatu.value
+          });
     
-    if (occupiedPositions[playerPosition.value]) {
-      replacements.push({
-        "name": playerName.value,
-        "position": playerPosition.value,
-        "rating": Math.floor((Number(paceStatu.value) + Number(shootingStatu.value) + Number(passingStatu.value) + Number(dribblinStatu.value) + Number(defendingStatu.value) + Number(physicalStatu.value)) / 6),
-        "pace": paceStatu.value,
-        "shooting": shootingStatu.value,
-        "passing": passingStatu.value,
-        "dribbling": dribblinStatu.value,
-        "defending": defendingStatu.value,
-        "physical": physicalStatu.value
-      });
-
-      updateReplacement(playerName.value, playerPosition.value, paceStatu.value, shootingStatu.value, passingStatu.value, dribblinStatu.value, defendingStatu.value, physicalStatu.value);
-    } else {
-
-      if (PlayerPlanCount < 10) {
-        addToArray(playerName.value, playerPosition.value, paceStatu.value, shootingStatu.value, passingStatu.value, dribblinStatu.value, defendingStatu.value, physicalStatu.value);
-        addToPlan(playerName.value, playerPosition.value, paceStatu.value, shootingStatu.value, passingStatu.value, dribblinStatu.value, defendingStatu.value, physicalStatu.value);
-        PlayerPlanCount++;
-        
-        occupiedPositions[playerPosition.value] = playerName.value;
-
-        // playerName.value = "";
-        // playerPosition.value = "";
-        // paceStatu.value = "";
-        // shootingStatu.value = "";
-        // passingStatu.value = "";
-        // dribblinStatu.value = "";
-        // defendingStatu.value = "";
-        // physicalStatu.value = "";
-      } else {
-        alert('the player added to replacement!');
+    
+          updateReplacement(playerName.value, playerPosition.value, paceStatu.value, shootingStatu.value, passingStatu.value, dribblinStatu.value, defendingStatu.value, physicalStatu.value);
+        } else {
+    
+          if (PlayerPlanCount < 10) {
+            addToArray(playerName.value, playerPosition.value, paceStatu.value, shootingStatu.value, passingStatu.value, dribblinStatu.value, defendingStatu.value, physicalStatu.value);
+            addToPlan(playerName.value, playerPosition.value, paceStatu.value, shootingStatu.value, passingStatu.value, dribblinStatu.value, defendingStatu.value, physicalStatu.value);
+            PlayerPlanCount++;
+            
+            occupiedPositions[playerPosition.value] = playerName.value;
+    
+            // playerName.value = "";
+            // playerPosition.value = "";
+            // paceStatu.value = "";
+            // shootingStatu.value = "";
+            // passingStatu.value = "";
+            // dribblinStatu.value = "";
+            // defendingStatu.value = "";
+            // physicalStatu.value = "";
+          } else {
+            alert('the player added to replacement!');
+          }
+        }
       }
-    }
+  
   } else {
     alert("Please enter the correct info!");
   }
@@ -125,36 +139,52 @@ btnAddTeamPlayer.addEventListener("click", function () {
 
 btnAddGkPlayer.addEventListener("click", function () {
   if (gkName.value.trim() !== "" && playerGkPosition.value !== "" && divingStatu.value.trim() !== "" && handlingStatu.value.trim() !== "" && kickingStatu.value.trim() !== "" && reflexesStatu.value.trim() !== "" && speedStatu.value.trim() !== "" && positioningStatu.value.trim() !== "") {
-    if (gkPlanCount < 1) {
-      addToArrayA(gkName.value, playerGkPosition.value, divingStatu.value, handlingStatu.value, kickingStatu.value, reflexesStatu.value, speedStatu.value, positioningStatu.value);
-      addGkToPlan(gkName.value, playerGkPosition.value, divingStatu.value, handlingStatu.value, kickingStatu.value, reflexesStatu.value, speedStatu.value, positioningStatu.value);
-      gkPlanCount++;
+    if (players.find(player => player.name.toLowerCase() === gkName.value.trim().toLowerCase())) {
+      alert(`The player "${gkName.value}" is already in the team.`);
+    }else {
+      if (gkPlanCount < 1) {
+        addToArrayA(gkName.value, playerGkPosition.value, divingStatu.value, handlingStatu.value, kickingStatu.value, reflexesStatu.value, speedStatu.value, positioningStatu.value);
+        addGkToPlan(gkName.value, playerGkPosition.value, divingStatu.value, handlingStatu.value, kickingStatu.value, reflexesStatu.value, speedStatu.value, positioningStatu.value);
+        gkPlanCount++;
+        
+        // playerName.value = "";
+        // playerPosition.value = "";
+        // paceStatu.value = "";
+        // shootingStatu.value = "";
+        // passingStatu.value = "";
+        // dribblinStatu.value = "";
+        // defendingStatu.value = "";
+        // physicalStatu.value = "";
+      } else {
+          replacements.push({
+            "name": gkName.value,
+            "position": playerGkPosition.value,
+            "rating": Math.floor((Number(divingStatu.value) + Number(handlingStatu.value) + Number(kickingStatu.value) + Number(reflexesStatu.value) + Number(speedStatu.value) + Number(positioningStatu.value)) / 6),
+            "diving": divingStatu.value,
+            "handling": handlingStatu.value,
+            "kicking": kickingStatu.value,
+            "reflexes": reflexesStatu.value,
+            "speed": speedStatu.value,
+            "positioning": positioningStatu.value
+          });
+          players.push({
+            "name": gkName.value,
+            "position": playerGkPosition.value,
+            "rating": Math.floor((Number(divingStatu.value) + Number(handlingStatu.value) + Number(kickingStatu.value) + Number(reflexesStatu.value) + Number(speedStatu.value) + Number(positioningStatu.value)) / 6),
+            "diving": divingStatu.value,
+            "handling": handlingStatu.value,
+            "kicking": kickingStatu.value,
+            "reflexes": reflexesStatu.value,
+            "speed": speedStatu.value,
+            "positioning": positioningStatu.value
+          });
+  
+      updateReplacementGK(gkName.value, playerGkPosition.value, divingStatu.value, handlingStatu.value, kickingStatu.value, reflexesStatu.value, speedStatu.value, positioningStatu.value);
       
-      // playerName.value = "";
-      // playerPosition.value = "";
-      // paceStatu.value = "";
-      // shootingStatu.value = "";
-      // passingStatu.value = "";
-      // dribblinStatu.value = "";
-      // defendingStatu.value = "";
-      // physicalStatu.value = "";
-    } else {
-        replacements.push({
-          "name": gkName.value,
-          "position": playerGkPosition.value,
-          "rating": Math.floor((Number(divingStatu.value) + Number(handlingStatu.value) + Number(kickingStatu.value) + Number(reflexesStatu.value) + Number(speedStatu.value) + Number(positioningStatu.value)) / 6),
-          "diving": divingStatu.value,
-          "handling": handlingStatu.value,
-          "kicking": kickingStatu.value,
-          "reflexes": reflexesStatu.value,
-          "speed": speedStatu.value,
-          "positioning": positioningStatu.value
-        });
-
-    updateReplacementGK(gkName.value, playerGkPosition.value, divingStatu.value, handlingStatu.value, kickingStatu.value, reflexesStatu.value, speedStatu.value, positioningStatu.value);
-    
+      }
+  
     }
-
+  
   }else {
     alert("please entre the corect info !");
   }
@@ -526,11 +556,15 @@ function poopUP(position) {
   let popUpReplacement = document.createElement("div");
   popUpReplacement.classList.add("fixed", "top-0", "left-0", "w-full", "h-full", "bg-gray-800", "bg-opacity-50", "flex", "justify-center", "items-center");
   popUpReplacement.innerHTML = `
-    <div class="bg-white p-6 rounded-lg shadow-lg w-3/4 max-w-4xl">
+    <div class="bg-gray-500 p-6 rounded-lg shadow-lg w-[42rem]">
       <h2 class="text-xl font-bold text-center mb-4">Players with the same position: ${position}</h2>
       <div class="player-replacement-poopup grid grid-cols-5 gap-3">
       </div>
+      <div class=" flex justify-around">
       <button class="mt-4 text-white bg-blue-500 hover:bg-blue-700 rounded px-4 py-2" onclick="closePopUp()">Close</button>
+      <button class="mt-4 text-white bg-red-500 hover:bg-red-700 rounded px-4 py-2" onclick="">delete</button>
+      <button class="mt-4 text-white bg-green-500 hover:bg-green-700 rounded px-4 py-2" onclick="">Edit</button>
+      </div>
     </div>
   `;
   let playerContainer = popUpReplacement.querySelector(".player-replacement-poopup");
@@ -665,11 +699,13 @@ function replacePlayerInPlan(player, position, name) {
   if (existingPlayerIndex !== -1) {
     let existingPlayer = planPlayers[existingPlayerIndex];
     replacements.push(existingPlayer);
+    players.push(existingPlayer);
     planPlayers.splice(existingPlayerIndex, 1);
   }
   let playerIndexInReplacements = replacements.findIndex(playerReplacement => playerReplacement.name === name);
   if (playerIndexInReplacements !== -1) {
     replacements.splice(playerIndexInReplacements, 1);
+    players.splice(playerIndexInReplacements, 1);
   }
 if (player.position !== "GK") {
   let divPlayerCard = document.createElement("div");
@@ -809,5 +845,12 @@ if (player.position !== "GK") {
   gk.innerHTML = "";
   gk.appendChild(divPlayerCard);
 }
- 
+
+}
+
+function deletePlayer(name) {
+  const deletePlayerI = planPlayers.findIndex(player => player.name === name);
+  if (deletePlayerI !== -1) {
+    planPlayers.splice(deletePlayerI, 1);
+  }
 }

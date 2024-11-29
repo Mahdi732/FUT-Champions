@@ -38,6 +38,8 @@
         <ul class="flex flex-col items-center gap-8 text-2xl text-center mt-[-7rem]">
             <li><a href="#">Home</a></li>
             <li><a href="#">About us</a></li>
+            <li><button onclick="showHideList()" type="button" class="bg-blue-600 px-3 py-2 md:px-4 md:py-2 rounded-full md:hover:bg-green-500 md:active:bg-red-700 text-white text-sm md:text-lg font-semibold transition duration-300">Add Player</button></li>
+            <li><button onclick="showHideListGk()" type="button" class="bg-blue-600 px-3 py-2 md:px-4 md:py-2 rounded-full md:hover:bg-green-500 md:active:bg-red-700 text-white text-sm md:text-lg font-semibold transition duration-300">Add GoalKeeper</button></li>
         </ul>
     </div>    
     </div>
@@ -178,8 +180,8 @@
         </div>
     </div>
     <!-- add players  -->
-    <div id="add-player" class="absolute mt-[8.3rem] inset-0 w-full h-screen flex justify-end items-center hidden ">
-        <div class="flex flex-col   md:gap-8 bg-black w-[37.225rem] h-[56rem] mb-3 md:h-[52rem] mt-2 mr-4 rounded-2xl">
+    <div id="add-player" class="absolute  md:mt-[8.3rem] inset-0 w-full h-screen flex justify-end items-center hidden ">
+        <div class="flex flex-col md:gap-8 bg-black w-[25rem] md:w-[37.225rem] h-[50rem]  md:h-[52rem] mt-2 mr-4 rounded-2xl">
             <div class="flex flex-col m-4">
                 <label for="" class="text-white text-lg font-semibold mb-2">Player Name</label>
                 <input id="player-name" minlength="5" maxlength="14" class="bg-[#2b2a2a] text-white hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " min="0" max="100" type="text" placeholder="  Enter player name"> 
@@ -204,9 +206,9 @@
 
             <!-- statique -->
 
-            <div class="flex flex-col m-4 gap-8 ">
+            <div class="flex flex-col m-4 md:gap-8 ">
                 <label class="text-white text-lg font-semibold mb-2 text-center"> Player Statique</label>
-                <div class="flex justify-center  gap-24">
+                <div class="md:flex md:justify-center  md:gap-24">
                     <div class="flex flex-col justify-start">
                         <label for="" class="text-white text-lg font-semibold mb-2">pace:</label>
                         <input id="pace-status" minlength="1" maxlength="14" class=" text-white bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
@@ -216,7 +218,7 @@
                         <input id="shooting-status" class=" text-white bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                     </div>
                 </div>
-                <div class="flex justify-center gap-24">
+                <div class="md:flex md:justify-center  md:gap-24">
                     <div class="flex flex-col justify-start">
                         <label for="" class="text-white text-lg font-semibold mb-2">passing:</label>
                         <input id="passing-status" class=" text-white bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
@@ -226,7 +228,7 @@
                         <input id="dribbling-status" class=" text-white bg-[#2b2a2a] hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                     </div>
                 </div>
-                <div class="flex justify-center gap-24">
+                <div class="md:flex md:justify-center  md:gap-24">
                     <div class="flex flex-col justify-start">
                         <label for="" class="text-white text-lg font-semibold mb-2">defending:</label>
                         <input id="defending-status" class=" text-white bg-[#2b2a2a] border hover:border-green-600 border-3 border-gray-600 rounded-xl h-8 " type="number"> 
@@ -248,8 +250,8 @@
 
     <!-- add GK -->
 
-    <div id="add-Gk" class="absolute mt-[8.3rem] inset-0 w-full h-screen flex justify-end items-center hidden ">
-        <div class="flex flex-col   md:gap-8 bg-black w-[37.225rem] h-[56rem] mb-3 md:h-[52rem] mt-2 mr-4 rounded-2xl">
+    <div id="add-Gk" class="absolute  md:mt-[8.3rem] inset-0 w-full h-screen flex justify-end items-center hidden ">
+        <div class="flex flex-col md:gap-8 bg-black w-[25rem] md:w-[37.225rem] h-[50rem]  md:h-[52rem] mt-2 mr-4 rounded-2xl">
             <div class="flex flex-col m-4">
                 <label for="" class="text-white text-lg font-semibold mb-2">Player Name</label>
                 <input id="gk-name" minlength="5" maxlength="14" class="bg-[#2b2a2a] hover:border-green-600 text-white border border-3 border-gray-600 rounded-xl h-8 " min="0" max="100" type="text" placeholder="  Enter player name"> 
@@ -263,9 +265,9 @@
             </div>
             <!-- statique -->
 
-            <div class="flex flex-col m-4 gap-8 ">       
+            <div class="flex flex-col m-4 md:gap-8 ">       
                     <label class="text-white text-lg font-semibold mb-2 text-center"> Player Statique</label>
-                    <div class="flex justify-center  gap-24">
+                    <div class="md:flex md:justify-center  md:gap-24">
                         <div class="flex flex-col justify-start">
                             <label for="" class="text-white text-lg font-semibold mb-2">diving:</label>
                             <input id="diving-status" class="bg-[#2b2a2a] text-white hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
@@ -275,7 +277,7 @@
                             <input id="handling-status" class="bg-[#2b2a2a] text-white hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                         </div>
                     </div>
-                    <div class="flex justify-center gap-24">
+                    <div class="md:flex md:justify-center  md:gap-24">
                         <div class="flex flex-col justify-start">
                             <label for="" class="text-white text-lg font-semibold mb-2">kicking:</label>
                             <input id="kicking-status" class="bg-[#2b2a2a] text-white hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
@@ -285,7 +287,7 @@
                             <input id="reflexes-status" class="bg-[#2b2a2a] text-white hover:border-green-600 border border-3 border-gray-600 rounded-xl h-8 " type="number"> 
                         </div>
                     </div>
-                    <div class="flex justify-center gap-24">
+                    <div class="md:flex md:justify-center  md:gap-24">
                         <div class="flex flex-col justify-start">
                             <label for="" class="text-white text-lg font-semibold mb-2">speed:</label>
                             <input id="speed-status" class="bg-[#2b2a2a] text-white border hover:border-green-600 border-3 border-gray-600 rounded-xl h-8 " type="number"> 
