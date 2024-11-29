@@ -1,8 +1,8 @@
 let players = [];
 
 
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
+let menuToggle = document.getElementById('menu-toggle');
+let mobileMenu = document.getElementById('mobile-menu');
 menuToggle.addEventListener('click', _ => {
     mobileMenu.classList.toggle('hidden');
 });
@@ -33,26 +33,27 @@ let kickingStatu = document.getElementById("kicking-status");
 let reflexesStatu = document.getElementById("reflexes-status");
 let speedStatu = document.getElementById("speed-status");
 let positioningStatu = document.getElementById("positioning-status");
-const btnAddTeamPlayer = document.getElementById("add-team-player");
-const btnAddGkPlayer = document.getElementById("add-team-gk");
+let btnAddTeamPlayer = document.getElementById("add-team-player");
+let btnAddGkPlayer = document.getElementById("add-team-gk");
 let addStatiqueChoise = document.getElementById("statique-add");
-const inputverifi = document.querySelectorAll('input[type="number"]');
-const inputverifitext = document.querySelectorAll('input[type="text"]');
-const lw = document.getElementById("lw");
-const st = document.getElementById("st");
-const rw = document.getElementById("rw");
-const lCm = document.getElementById("l-cm");
-const cAm = document.getElementById("cam");
-const rCm = document.getElementById("r-cm");
-const lb = document.getElementById("lb");
-const lCb = document.getElementById("l-cb");
-const rCb = document.getElementById("r-cb");
-const rb = document.getElementById("rb");
-const gk = document.getElementById("gk");
+let inputverifi = document.querySelectorAll('input[type="number"]');
+let inputverifitext = document.querySelectorAll('input[type="text"]');
+let lw = document.getElementById("lw");
+let st = document.getElementById("st");
+let rw = document.getElementById("rw");
+let lCm = document.getElementById("l-cm");
+let cAm = document.getElementById("cam");
+let rCm = document.getElementById("r-cm");
+let lb = document.getElementById("lb");
+let lCb = document.getElementById("l-cb");
+let rCb = document.getElementById("r-cb");
+let rb = document.getElementById("rb");
+let gk = document.getElementById("gk");
 let PlayerPlanCount = 0;
 let gkPlanCount = 0;
 let replacements = [];
-console.log(replacements);
+let planPlayers = [];
+console.log(planPlayers);
 
 let occupiedPositions = {};
 let playerChosed = document.querySelectorAll(".player-chosed");
@@ -242,7 +243,7 @@ function addToPlan(name, position, pace, shooting, passing, dribbling, defending
         
     </div>
 </button>
-  `
+  `;
 
   let button = divPlayerCard.querySelector("button");
   button.addEventListener("click", function () {
@@ -250,6 +251,20 @@ function addToPlan(name, position, pace, shooting, passing, dribbling, defending
   
 });
   addPositionToPlan(position, divPlayerCard); 
+  let playerAdded = {
+    "name" : name,
+    "position" : position,
+    "rating" : Math.floor((Number(pace) + Number(shooting) + Number(passing) + Number(dribbling) + Number(defending) + Number(physical)) / 6),
+    "pace" : pace,
+    "shooting" : shooting,
+    "passing" : passing,
+    "dribbling" : dribbling,
+    "defending" : defending,
+    "physical" : physical
+  }
+
+  planPlayers.push(playerAdded);
+ 
 }
 
 function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed, positioning) {
@@ -365,7 +380,7 @@ function addPositionToPlan(planPosition, divPlayerCard){
 
 function updateReplacement(name, position, pace, shooting, passing, dribbling, defending, physical) {
   let replacementList = document.getElementById("replacement-list");
-  const replacementLimit = 14; 
+  let replacementLimit = 14; 
   
   if (replacementList.children.length >= replacementLimit) {
       alert("Replacement slots are full. Cannot add more players.");
@@ -430,7 +445,7 @@ replacementList.appendChild(li);
 
 function updateReplacementGK(name, position, diving, handling, kicking, reflexes, speed, positioning) {
   let replacementList = document.getElementById("replacement-list");
-  const replacementLimit = 4; 
+  let replacementLimit = 4; 
   
   if (replacementList.children.length >= replacementLimit) {
       alert("Replacement slots are full. Cannot add more players.");
@@ -495,7 +510,7 @@ function updateReplacementGK(name, position, diving, handling, kicking, reflexes
 }
 
 function poopUP(position) {
-  const filteredPlayers = replacements.filter(player => player.position === position);
+  let filteredPlayers = replacements.filter(player => player.position === position);
   let popUpReplacement = document.createElement("div");
   popUpReplacement.classList.add("fixed", "top-0", "left-0", "w-full", "h-full", "bg-gray-800", "bg-opacity-50", "flex", "justify-center", "items-center");
   popUpReplacement.innerHTML = `
@@ -506,10 +521,10 @@ function poopUP(position) {
       <button class="mt-4 text-white bg-blue-500 hover:bg-blue-700 rounded px-4 py-2" onclick="closePopUp()">Close</button>
     </div>
   `;
-  const playerContainer = popUpReplacement.querySelector(".player-replacement-poopup");
+  let playerContainer = popUpReplacement.querySelector(".player-replacement-poopup");
   filteredPlayers.forEach(player => {
     if (position !== "GK") {
-      const playerCard = document.createElement("div");
+      let playerCard = document.createElement("div");
       playerCard.classList.add("flex", "flex-col", "items-center", "bg-gray-200", "p-4", "rounded-lg", "shadow-md");
       playerCard.innerHTML = `
       <button type="button" class=" flex flex-col items-center hover:scale-150 transition-all duration-500">
@@ -556,10 +571,14 @@ function poopUP(position) {
       </button>
 
       `;
-  
+
+      playerCard.addEventListener("click", function() {
+        replacePlayerInPlan(player); 
+        closePopUp(); 
+      });  
       playerContainer.appendChild(playerCard);
     }else {
-      const playerCard = document.createElement("div");
+      let playerCard = document.createElement("div");
       playerCard.classList.add("flex", "flex-col", "items-center", "bg-gray-200", "p-4", "rounded-lg", "shadow-md");
       playerCard.innerHTML =  `
       <button type="button" class=" flex flex-col items-center hover:scale-150 transition-all duration-500">
@@ -624,4 +643,55 @@ function closePopUp() {
   
 }
 
+function replacePlayerInPlan(player) {
+  let divPlayerCard = document.createElement("div");
+  divPlayerCard.innerHTML =`
+      <button type="button" class=" flex flex-col items-center hover:scale-150 transition-all duration-500">
+        <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+          <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
+            <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
+              <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(player.pace) + Number(player.shooting) + Number(player.passing) + Number(player.dribbling) + Number(player.defending) + Number(player.physical)) / 6)}</p>
+              <p class="text-[0.625rem] text-white">${player.position}</p>
+            </span>
+            <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]"></div>
+          </div>
+          <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
+            <div class="mt-1">
+              <p class="text-[0.650rem] font-medium text-white">${player.name}</p>
+            </div>
+            <div class="flex justify-center gap-1">
+              <div class="text-center">
+                <p class="text-[0.5rem] font-normal text-white">PAC</p>
+                <p class="text-[0.5rem] font-bold text-white">${player.pace}</p>
+              </div>
+              <div class="text-center">
+                <p class="text-[0.5rem] font-normal text-white">SHO</p>
+                <p class="text-[0.5rem] font-bold text-white">${player.shooting}</p>
+              </div>
+              <div class="text-center">
+                <p class="text-[0.5rem] font-normal text-white">PAS</p>
+                <p class="text-[0.5rem] font-bold text-white">${player.passing}</p>
+              </div>
+              <div class="text-center">
+                <p class="text-[0.5rem] font-normal text-white">DRI</p>
+                <p class="text-[0.5rem] font-bold text-white">${player.dribbling}</p>
+              </div>
+              <div class="text-center">
+                <p class="text-[0.5rem] font-normal text-white">DEF</p>
+                <p class="text-[0.5rem] font-bold text-white">${player.defending}</p>
+              </div>
+              <div class="text-center">
+                <p class="text-[0.5rem] font-normal text-white">PHY</p>
+                <p class="text-[0.5rem] font-bold text-white">${player.physical}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </button>
 
+      `;
+      divPlayerCard.querySelector("button").addEventListener("click", function() {
+        poopUP(player.position);
+      });
+  addPositionToPlan(player.position, divPlayerCard); 
+}
