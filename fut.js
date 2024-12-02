@@ -718,6 +718,6 @@ function deleteplayers(card) {
 
       deleteBtns.classList.toggle('block');
       modifyBtns2.classList.toggle('block');
-
+      
     })
 }
