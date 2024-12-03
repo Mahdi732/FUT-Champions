@@ -141,7 +141,7 @@ function addToPlan(name, position, pace, shooting, passing, dribbling, defending
   let addCardToPlan = document.createElement('div');
   addCardToPlan.classList.add('hover:scale-125',  'transition-all', 'duration-500');
   addCardToPlan.innerHTML = `
-  <button type="button" class="" class="flex flex-col items-center">
+  <button type="button" class="group flex flex-col items-center">
     <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
             <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
@@ -188,14 +188,13 @@ function addToPlan(name, position, pace, shooting, passing, dribbling, defending
             </div>
          </div>     
          <div class="flex justify-around pl-2">
-           <div class="detete-btn bg-red-700 p-1 rounded-full text-[8px] text-white hidden">delete</div>
-           <div class="modify-btn bg-green-700 p-1 rounded-full text-[8px] text-white hidden">modify</div>
+           <div class="detete-btn bg-red-700 p-1 rounded-full text-[8px] text-white transition-all duration-300 group-hover:opacity-100 opacity-0">delete</div>
+           <div class="modify-btn bg-green-700 p-1 rounded-full text-[8px] text-white transition-all duration-300 group-hover:opacity-100 opacity-0">modify</div>
          </div>
     </div>
 </button>
 
   `
-  deleteplayers(addCardToPlan)
 postexact(position, addCardToPlan);
 let buttondelete = addCardToPlan.querySelector(".detete-btn");
 buttondelete.addEventListener("click", function () {
@@ -331,7 +330,7 @@ function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed,
   let addCardToPlan = document.createElement('div');
     addCardToPlan.classList.add('mt-[-1rem]', 'hover:scale-125',  'transition-all', 'duration-500');
     addCardToPlan.innerHTML = `
-<button type="button" class="show-the-gk-roplacement" class="flex flex-col items-center hover:scale-150 transition-all duration-500">
+<button type="button" class="group flex flex-col items-center hover:scale-100 transition-all duration-500">
     <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
             <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
@@ -376,16 +375,14 @@ function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed,
                 <img src="/img/msl.webp" class="w-2" alt="">
                 <img src="/img/inter.webp" class="w-2" alt="">
             </div>
-         </div>
-         <div class="flex justify-around pl-2">
-           <div class="detete-btn bg-red-700 p-1 rounded-full text-[8px] text-white hidden">delete</div>
-           <div class="modify-btn bg-green-700 p-1 rounded-full text-[8px] text-white hidden">modify</div>
+            <div class="flex w-full justify-around pl-2">
+           <div class="detete-btn bg-red-700 p-1 rounded-full text-[8px] text-white transition-all duration-300 group-hover:opacity-100 opacity-0">delete</div>
+           <div class="modify-btn bg-green-700 p-1 rounded-full text-[8px] text-white transition-all duration-300 group-hover:opacity-100 opacity-0">modify</div>
          </div>
     </div>
 </button>
   `;
-  deleteplayers(addCardToPlan);
-  let buttondelete = addCardToPlan.querySelector("button");
+  let buttondelete = addCardToPlan.querySelector(".detete-btn");
   buttondelete.addEventListener("click", function () {
     deletePlayersFromThePlan(name, position, addCardToPlan)
   });
@@ -397,8 +394,6 @@ function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed,
   gk.innerHTML = "";
   gk.appendChild(addCardToPlan);
 }
-let modifyBtn = document.querySelector('.modify-btn');
-let deleteBtn = document.querySelector('.delete-btn');
 //show the player in replacement
 function updateReplacementList() {
   if (replacements.length <= 14) {
@@ -454,13 +449,12 @@ function updateReplacementList() {
               <img src="/img/inter.webp" class="w-2" alt="">
           </div>
        </div>
-      
   </div>
   </button>
     `;
     replacementContainer.appendChild(playerCard);
   let button = playerCard.querySelector("button");
-  button.addEventListener("dblclick", _ => {
+  button.addEventListener("click", _ => {
   suprimTheReplacementPlayer(player.name);
 });
       } else{
@@ -519,7 +513,7 @@ function updateReplacementList() {
   `;
   replacementContainer.appendChild(playerCard);
   let button = playerCard.querySelector("button");
-  button.addEventListener("dblclick", _ => {
+  button.addEventListener("click", _ => {
   suprimTheReplacementPlayer(player.name);
 });
 }
@@ -552,7 +546,7 @@ filterplayers.forEach(player => {
     let playerCard = document.createElement("div");
     playerCard.classList.add("flex", "flex-col", "items-center", "bg-gray-200", "p-4", "rounded-lg", "shadow-md");
     playerCard.innerHTML = `
-    <button type="button" class=" flex flex-col items-center hover:scale-150 transition-all duration-500">
+    <button type="button" class="group flex flex-col items-center hover:scale-150 transition-all duration-500">
       <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
           <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
@@ -592,20 +586,29 @@ filterplayers.forEach(player => {
             </div>
           </div>
         </div>
+          <div class="flex justify-around pl-2">
+           <div class="detete-btn bg-red-700 p-1 rounded-full text-[8px] text-white transition-all duration-300 group-hover:opacity-100 opacity-0">delete</div>
+           <div class="modify-btn bg-green-700 p-1 rounded-full text-[8px] text-white transition-all duration-300 group-hover:opacity-100 opacity-0">modify</div>
+         </div>
       </div>
     </button>
     `;
-    let button = playerCard.querySelector("button");
-    button.addEventListener("dblclick", function () {
+    let button = playerCard.querySelector(".detete-btn");
+    button.addEventListener("click", function () {
     suprimTheReplacementPlayer(player.name);
     closePopUp();
+});
+let buttonToSwitch = playerCard.querySelector("button");
+buttonToSwitch.addEventListener("click", function () {
+  replacePlayerInPlan(player.position, player.name)
+closePopUp();
 });
     playerForSwitch.appendChild(playerCard);
   }else {    
     let playerCard = document.createElement("div");
     playerCard.classList.add("flex", "flex-col", "items-center", "bg-gray-200", "p-4", "rounded-lg", "shadow-md");
     playerCard.innerHTML =  `
-    <button type="button" class="flex flex-col items-center">
+    <button type="button" class="group flex flex-col items-center">
     <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
     <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
       <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
@@ -651,14 +654,22 @@ filterplayers.forEach(player => {
           <img src="/img/inter.webp" class="w-2" alt="">
       </div>
    </div>
-  
+      <div class="flex justify-around pl-2">
+           <div class="detete-btn bg-red-700 p-1 rounded-full text-[8px] text-white transition-all duration-300 group-hover:opacity-100 opacity-0">delete</div>
+           <div class="modify-btn bg-green-700 p-1 rounded-full text-[8px] text-white transition-all duration-300 group-hover:opacity-100 opacity-0">modify</div>
+      </div>
 </div>
 </button>
 
 `;
-let button = playerCard.querySelector("button");
-button.addEventListener("dblclick", function () {
+let button = playerCard.querySelector(".detete-btn");
+button.addEventListener("click", function () {
 suprimTheReplacementPlayer(player.name);
+closePopUp();
+});
+let buttonToSwitch = playerCard.querySelector("button");
+buttonToSwitch.addEventListener("click", function () {
+  replacePlayerInPlan(player.position, player.name);
 closePopUp();
 });
   playerForSwitch.appendChild(playerCard);
@@ -670,8 +681,9 @@ document.body.appendChild(popUpReplacement);
 
 function closePopUp() {
   let popUp = document.querySelector(".fixed");
+  if (popUp) {
     popUp.remove();
-  
+  }
 }
 
 //suprrime the player from replacements
@@ -695,7 +707,7 @@ function deletePlayersFromThePlan(name, position, card) {
   addCardToPlan.innerHTML = `
   <div class="bg-[url('../img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem] ">
   </div>
-  <p class="bg-[url('../img/pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base h-9 w-9 md:h-11 md:w-11 mt-[-0.6rem] text-white text-center">
+  <p class="bg-[url('../img/pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base h-9 w-9 md:h-11 md:w-11 ml-6 mt-[-0.6rem] text-white text-center">
       ${position}
   </p>`;
   gk.appendChild(addCardToPlan);
@@ -704,20 +716,32 @@ function deletePlayersFromThePlan(name, position, card) {
   updateReplacementList()
 }
 
+//switch the players from the replacements to plan
+function replacePlayerInPlan(position, name) {
+  console.log(name);
+  let indexToRemove = playersInPlan.findIndex(player => player.position === position);
+  console.log(indexToRemove);
+  let indexToReplace = replacements.findIndex(player => player.name === name);
+  console.log(indexToReplace);
 
-function deleteplayers(card) {
-  let deleteBtns = card.querySelector('.detete-btn');
-  let modifyBtns2 = card.querySelector('.modify-btn');
-
-    card.addEventListener("mouseover", function () {
-      deleteBtns.classList.toggle('hidden');
-      modifyBtns2.classList.toggle('hidden');
-
+  if (indexToRemove !== -1 && indexToReplace !== -1) {
+    let currentPlayer = playersInPlan[indexToRemove];
+    replacements.push(currentPlayer);
+    playersInPlan.splice(indexToRemove, 1);
+    let replacementPlayer = replacements[indexToReplace];
+    playersInPlan.push(replacementPlayer)
+    playerExistan[position] = replacementPlayer.name;
+    replacements.splice(indexToReplace, 1);
+    playerReplacements(position);
+    updateReplacementList();
+    playersInPlan.forEach(player => {
+      if (player.position !== "GK") {
+        addToPlan(player.name, player.position, player.pace, player.shooting, player.passing, player.dribbling, player.defending, player.physical);
+      }else {
+        addGkToPlan(player.name, player.position, player.diving, player.handling, player.kicking, player.reflexes, player.speed, player.positioning);
+      }
     })
-    card.addEventListener("mouseleave", function () {
-
-      deleteBtns.classList.toggle('block');
-      modifyBtns2.classList.toggle('block');
-      
-    })
+  }
+ 
+  closePopUp();
 }
