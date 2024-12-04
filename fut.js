@@ -150,7 +150,7 @@ function addToPlan(name, position, pace, shooting, passing, dribbling, defending
                 <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(pace) + Number(shooting) + Number(passing) + Number(dribbling) + Number(defending) + Number(physical)) / 6)}</p>
                 <p class="text-[0.625rem] text-white">${position}</p>
             </span>
-            <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+            <div class="bg-[url('messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
             </div>
         </div>
          <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
