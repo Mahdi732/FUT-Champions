@@ -74,6 +74,7 @@ for (let i = 0; i < inputNameVerifi.length; i++) {
   });
 }
 
+
 //add player to plan 
 btnAddTeamPlayer.addEventListener("click", function () {
   if (playerName.value.trim() !== "" && playerPosition.value !== "" && paceStatu.value.trim() !== "" && shootingStatu.value.trim() !== "" && passingStatu.value.trim() !== "" && dribblinStatu.value.trim() !== "" && defendingStatu.value.trim() !== "" && physicalStatu.value.trim() !== "") {
@@ -130,6 +131,7 @@ btnAddTeamPlayer.addEventListener("click", function () {
           });
           playerExistan[playerPosition.value] = playerName.value;
       }
+     
     }
   } else{
     alert("please fill the correct information!");
@@ -681,9 +683,7 @@ document.body.appendChild(popUpReplacement);
 
 function closePopUp() {
   let popUp = document.querySelector(".fixed");
-  if (popUp) {
     popUp.remove();
-  }
 }
 
 //suprrime the player from replacements
@@ -729,7 +729,7 @@ function replacePlayerInPlan(position, name) {
     replacements.push(currentPlayer);
     playersInPlan.splice(indexToRemove, 1);
     let replacementPlayer = replacements[indexToReplace];
-    playersInPlan.push(replacementPlayer)
+    playersInPlan.push(replacementPlayer);
     playerExistan[position] = replacementPlayer.name;
     replacements.splice(indexToReplace, 1);
     playerReplacements(position);
