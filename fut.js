@@ -339,7 +339,7 @@ function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed,
                 <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(diving) + Number(handling) + Number(kicking) + Number(reflexes) + Number(speed) + Number(positioning)) / 6)}</p>
                 <p class="text-[0.625rem] text-white">${position}</p>
             </span>
-            <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+            <div class="bg-[url('messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
             </div>
         </div>
          <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
@@ -373,9 +373,9 @@ function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed,
                 </div>
             </div>
             <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
-                <img src="/img/argentina.webp" class="w-2" alt="">
-                <img src="/img/msl.webp" class="w-2" alt="">
-                <img src="/img/inter.webp" class="w-2" alt="">
+                <img src="argentina.webp" class="w-2" alt="">
+                <img src="msl.webp" class="w-2" alt="">
+                <img src="inter.webp" class="w-2" alt="">
             </div>
             <div class="flex w-full justify-around pl-2">
            <div class="detete-btn bg-red-700 p-1 rounded-full text-[8px] text-white transition-all duration-300 group-hover:opacity-100 opacity-0">delete</div>
@@ -406,13 +406,13 @@ function updateReplacementList() {
         let playerCard = document.createElement("div");
         playerCard.innerHTML = `
         <button type="button" class="flex flex-col items-center">
-        <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+        <div class="bg-[url('99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
           <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
               <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(player.pace) + Number(player.shooting) + Number(player.passing) + Number(player.dribbling) + Number(player.defending) + Number(player.physical)) / 6)}</p>
               <p class="text-[0.625rem] text-white">${player.position}</p>
           </span>
-          <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+          <div class="bg-[url('messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
           </div>
         </div>
        <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
@@ -446,9 +446,9 @@ function updateReplacementList() {
               </div>
           </div>
           <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
-              <img src="/img/argentina.webp" class="w-2" alt="">
-              <img src="/img/msl.webp" class="w-2" alt="">
-              <img src="/img/inter.webp" class="w-2" alt="">
+              <img src="argentina.webp" class="w-2" alt="">
+              <img src="msl.webp" class="w-2" alt="">
+              <img src="inter.webp" class="w-2" alt="">
           </div>
        </div>
   </div>
@@ -463,13 +463,13 @@ function updateReplacementList() {
         let playerCard = document.createElement("div");
         playerCard.innerHTML = `
         <button type="button" class="flex flex-col items-center">
-        <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+        <div class="bg-[url('99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
           <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
               <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(player.diving) + Number(player.handling) + Number(player.kicking) + Number(player.reflexes) + Number(player.speed) + Number(player.positioning)) / 6)}</p>
               <p class="text-[0.625rem] text-white">${player.position}</p>
           </span>
-          <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+          <div class="bg-[url('messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
           </div>
        </div>
        <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
@@ -503,9 +503,9 @@ function updateReplacementList() {
               </div>
           </div>
           <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
-              <img src="/img/argentina.webp" class="w-2" alt="">
-              <img src="/img/msl.webp" class="w-2" alt="">
-              <img src="/img/inter.webp" class="w-2" alt="">
+              <img src="argentina.webp" class="w-2" alt="">
+              <img src="msl.webp" class="w-2" alt="">
+              <img src="inter.webp" class="w-2" alt="">
           </div>
        </div>
       
@@ -549,13 +549,13 @@ filterplayers.forEach(player => {
     playerCard.classList.add("flex", "flex-col", "items-center", "bg-gray-200", "p-4", "rounded-lg", "shadow-md");
     playerCard.innerHTML = `
     <button type="button" class="group flex flex-col items-center hover:scale-150 transition-all duration-500">
-      <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+      <div class="bg-[url('99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
           <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
             <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(player.pace) + Number(player.shooting) + Number(player.passing) + Number(player.dribbling) + Number(player.defending) + Number(player.physical)) / 6)}</p>
             <p class="text-[0.625rem] text-white">${player.position}</p>
           </span>
-          <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]"></div>
+          <div class="bg-[url('messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]"></div>
         </div>
         <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
           <div class="mt-1">
@@ -611,13 +611,13 @@ closePopUp();
     playerCard.classList.add("flex", "flex-col", "items-center", "bg-gray-200", "p-4", "rounded-lg", "shadow-md");
     playerCard.innerHTML =  `
     <button type="button" class="group flex flex-col items-center">
-    <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+    <div class="bg-[url('99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
     <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
       <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
           <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(player.diving) + Number(player.handling) + Number(player.kicking) + Number(player.reflexes) + Number(player.speed) + Number(player.positioning)) / 6)}</p>
           <p class="text-[0.625rem] text-white">${player.position}</p>
       </span>
-      <div class="bg-[url('/img/messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
+      <div class="bg-[url('messi.png')] bg-cover bg-no-repeat w-[7rem] h-[5.75rem]">
       </div>
    </div>
    <div class="flex flex-col items-center ml-[0.6rem] mt-[-0.450rem]">
@@ -651,9 +651,9 @@ closePopUp();
           </div>
       </div>
       <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
-          <img src="/img/argentina.webp" class="w-2" alt="">
-          <img src="/img/msl.webp" class="w-2" alt="">
-          <img src="/img/inter.webp" class="w-2" alt="">
+          <img src="argentina.webp" class="w-2" alt="">
+          <img src="msl.webp" class="w-2" alt="">
+          <img src="inter.webp" class="w-2" alt="">
       </div>
    </div>
       <div class="flex justify-around pl-2">
@@ -705,9 +705,9 @@ function deletePlayersFromThePlan(name, position, card) {
   card.remove(); 
   let addCardToPlan = document.createElement('div');
   addCardToPlan.innerHTML = `
-  <div class="bg-[url('../img/placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem] ">
+  <div class="bg-[url('git placeholder-card-normal.webp')] bg-cover bg-no-repeat h-[7rem] w-[5rem] md:h-[8.8rem] md:w-[6rem] ">
   </div>
-  <p class="bg-[url('../img/pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base h-9 w-9 md:h-11 md:w-11 ml-6 mt-[-0.6rem] text-white text-center">
+  <p class="bg-[url('git pos_base.png')] bg-contain bg-no-repeat text-[0.8rem] md:text-base h-9 w-9 md:h-11 md:w-11 ml-6 mt-[-0.6rem] text-white text-center">
       ${position}
   </p>`;
   gk.appendChild(addCardToPlan);
