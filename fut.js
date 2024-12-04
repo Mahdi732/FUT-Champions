@@ -144,7 +144,7 @@ function addToPlan(name, position, pace, shooting, passing, dribbling, defending
   addCardToPlan.classList.add('hover:scale-125',  'transition-all', 'duration-500');
   addCardToPlan.innerHTML = `
   <button type="button" class="group flex flex-col items-center">
-    <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+    <div class="bg-[url('99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
             <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
                 <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(pace) + Number(shooting) + Number(passing) + Number(dribbling) + Number(defending) + Number(physical)) / 6)}</p>
@@ -184,9 +184,9 @@ function addToPlan(name, position, pace, shooting, passing, dribbling, defending
                 </div>
             </div>
             <div class="flex justify-center items-center gap-1 mt-[0.1rem]">
-                <img src="/img/argentina.webp" class="w-2" alt="">
-                <img src="/img/msl.webp" class="w-2" alt="">
-                <img src="/img/inter.webp" class="w-2" alt="">
+                <img src="argentina.webp" class="w-2" alt="">
+                <img src="msl.webp" class="w-2" alt="">
+                <img src="inter.webp" class="w-2" alt="">
             </div>
          </div>     
          <div class="flex justify-around pl-2">
@@ -333,7 +333,7 @@ function addGkToPlan(name, position, diving, handling, kicking, reflexes, speed,
     addCardToPlan.classList.add('mt-[-1rem]', 'hover:scale-125',  'transition-all', 'duration-500');
     addCardToPlan.innerHTML = `
 <button type="button" class="group flex flex-col items-center hover:scale-100 transition-all duration-500">
-    <div class="bg-[url('/img/99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
+    <div class="bg-[url('99_total_rush.webp')] bg-cover bg-no-repeat w-[8rem] h-[12rem] flex flex-col">
         <div class="flex justify-center items-center mr-[-1.3rem] mt-[1.950rem]">
             <span class="flex flex-col mt-[-2.5rem] mr-[-1rem]">
                 <p class="text-[0.625rem] font-bold text-white">${Math.floor((Number(diving) + Number(handling) + Number(kicking) + Number(reflexes) + Number(speed) + Number(positioning)) / 6)}</p>
